@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.doraemonframework</groupId>
+    <artifactId>doraemon-framework-bom</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Doraemon Framework (Bill of Materials)</name>
+    <description>Doraemon Framework (Bill of Materials)</description>
+    <url>https://github.com/doraemon-projects/doraemon-framework</url>
+    <organization>
+        <name>jfteam</name>
+        <url>http://www.jfteam.org/doraemon-framework</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>fengwp</id>
+            <name>fengwenping</name>
+            <email>fengwp@live.cn</email>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git://github.com/doraemon-projects/doraemon-framework</connection>
+        <developerConnection>scm:git:git://github.com/doraemon-projects/doraemon-framework</developerConnection>
+        <url>https://github.com/github.com/doraemon-projects/doraemon-framework</url>
+    </scm>
+
+    <properties>
+        <doraemon-framework.version>0.0.1.SNAPSHOT</doraemon-framework.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-base</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-utils</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-mybatis</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-webmvc</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
