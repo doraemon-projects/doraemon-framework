@@ -5,6 +5,14 @@
     <groupId>org.doraemon.framework</groupId>
     <artifactId>doraemon-utils</artifactId>
     <version>0.0.1.SNAPSHOT</version>
+    <dependencies>
+        <dependency>
+            <groupId>org.doraemon.framework</groupId>
+            <artifactId>doraemon-base</artifactId>
+            <version>0.0.1.SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
 
     <name>Doraemon Utilities</name>
     <description>Doraemon Utilities</description>
