@@ -1,11 +1,9 @@
 package org.doraemon.framework.exception;
 
-import org.jfteam.framework.holder.AppContextHolder;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.util.StringUtils;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.Locale;
 
 /**
@@ -25,7 +23,7 @@ public final class ExceptionMessageManager {
         if (messageSource == null) {
             synchronized (ExceptionMessageManager.class) {
                 if (messageSource == null) {
-                    messageSource = AppContextHolder.getContext().getBean("messageSource", MessageSource.class);
+//                    messageSource = AppContextHolder.getContext().getBean("messageSource", MessageSource.class);
                 }
             }
         }
