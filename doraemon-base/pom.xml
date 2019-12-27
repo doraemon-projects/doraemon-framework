@@ -13,7 +13,6 @@
         <name>jfteam</name>
         <url>http://www.jfteam.org/doraemon-framework</url>
     </organization>
-
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -70,6 +69,13 @@
             <artifactId>spring-aop</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.59</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
