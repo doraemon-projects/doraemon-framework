@@ -33,6 +33,11 @@ public class ApplicationException extends Exception {
         this.args = args;
     }
 
+    public ApplicationException(IExceptionCodeProvider exception) {
+        this.errorCode = exception.getCode();
+
+    }
+
     /**
      * 尽量不要调用此方法,错误信息采用ExceptionMessageManager构建
      *
