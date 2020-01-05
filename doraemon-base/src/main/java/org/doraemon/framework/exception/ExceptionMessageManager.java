@@ -1,10 +1,13 @@
 package org.doraemon.framework.exception;
 
-import org.springframework.context.MessageSource;
-import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.util.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.util.Locale;
+import java.io.IOException;
+import java.net.URL;
+import java.text.MessageFormat;
+import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,19 +18,45 @@ import java.util.Locale;
  */
 public final class ExceptionMessageManager {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionMessageManager.class);
+
     public static final String ACCEPT_LANGUAGE = "Accept-Language";
 
-    private static MessageSource messageSource;
+    public static final Map<String, Properties> LANG_PROPERTIES = new ConcurrentHashMap<>();
 
-    public static MessageSource getMessageSource() {
-        if (messageSource == null) {
-            synchronized (ExceptionMessageManager.class) {
-                if (messageSource == null) {
-//                    messageSource = AppContextHolder.getContext().getBean("messageSource", MessageSource.class);
+    public static final String SIMPLIFIED_CHINESE = "zh_CN";
+    public static final String US = "en_US";
+    public static final String EXCEPTION_PROPERTIES_FILE_NAME = "exception";
+
+    static {
+        Enumeration<URL> resources = null;
+        try {
+            resources = ExceptionMessageManager.class.getClassLoader().getResources(EXCEPTION_PROPERTIES_FILE_NAME);
+        } catch (IOException e) {
+            LOGGER.error("init exception resources failure", e);
+        }
+        if (Objects.nonNull(resources) && resources.hasMoreElements()) {
+            while (resources.hasMoreElements()) {
+                final URL url = resources.nextElement();
+                ResourceBundle resourceBundle = ResourceBundle.getBundle(url.getPath());
+                Properties properties = new Properties();
+                final Enumeration<String> keys = resourceBundle.getKeys();
+                while (keys.hasMoreElements()) {
+                    final String key = keys.nextElement();
+                    final String value = resourceBundle.getString(key);
+                    properties.put(key, value);
                 }
+                final String displayLanguage = resourceBundle.getLocale().getDisplayLanguage();
+                LANG_PROPERTIES.put(displayLanguage, properties);
             }
         }
-        return messageSource;
+    }
+
+    private static Properties getMessageSource(Locale locale) {
+        if (LANG_PROPERTIES.containsKey(locale.getDisplayLanguage())) {
+            return LANG_PROPERTIES.get(locale.getDisplayLanguage());
+        }
+        throw new IllegalArgumentException("this language " + locale.getDisplayLanguage() + " don't support.");
     }
 
     /**
@@ -64,6 +93,8 @@ public final class ExceptionMessageManager {
     }
 
     public static String getMessage(String code, Object[] args, String defaultMessage, Locale locale) {
-        return ExceptionMessageManager.getMessageSource().getMessage(code, args, defaultMessage, locale);
+        final Properties messageSource = ExceptionMessageManager.getMessageSource(locale);
+        final String property = messageSource.getProperty(code, defaultMessage);
+        return MessageFormat.format(property, args);
     }
 }
