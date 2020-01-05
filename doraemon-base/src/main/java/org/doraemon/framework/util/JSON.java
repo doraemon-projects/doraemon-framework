@@ -32,7 +32,7 @@ public abstract class JSON {
      * @param text JSON字符串
      * @return JSONObject或者JSONArray对象
      */
-    public static final JsonNode parse(String text) {
+    public static JsonNode parse(String text) {
         try {
             return OBJECT_MAPPER.readTree(text);
         } catch (JsonProcessingException e) {
@@ -46,7 +46,7 @@ public abstract class JSON {
      * @param javaObject JavaBean对象
      * @return JSONObject或者JSONArray对象
      */
-    public static final JsonNode toJSON(Object javaObject) {
+    public static JsonNode toJSON(Object javaObject) {
         return OBJECT_MAPPER.convertValue(javaObject, JsonNode.class);
     }
 
@@ -58,7 +58,7 @@ public abstract class JSON {
      * @param <T>   泛型
      * @return JavaBean对象
      */
-    public static final <T> T parseObject(String text, Class<T> clazz) {
+    public static <T> T parseObject(String text, Class<T> clazz) {
         try {
             return OBJECT_MAPPER.readValue(text, clazz);
         } catch (JsonProcessingException e) {
@@ -75,12 +75,11 @@ public abstract class JSON {
      * @param <T>   泛型
      * @return JavaBean结合
      */
-    public static final <T> List<T> parseArray(String text, Class<T> clazz) {
+    public static <T> List<T> parseArray(String text, Class<T> clazz) {
         final TypeFactory typeFactory = OBJECT_MAPPER.getTypeFactory();
         final JavaType javaType = typeFactory.constructParametricType(List.class, clazz);
         try {
-            final List<T> list = OBJECT_MAPPER.readValue(text, javaType);
-            return list;
+            return OBJECT_MAPPER.readValue(text, javaType);
         } catch (JsonProcessingException e) {
             throw new JsonCastException("convert json string to clazz collection failure", e);
         }
@@ -92,7 +91,7 @@ public abstract class JSON {
      * @param object JavaBean对象
      * @return JSON字符串
      */
-    public static final String toJSONString(Object object) {
+    public static String toJSONString(Object object) {
         return toJSONString(object, false);
     }
 
@@ -103,7 +102,7 @@ public abstract class JSON {
      * @param prettyFormat 是否格式化
      * @return JSON字符串
      */
-    public static final String toJSONString(Object object, boolean prettyFormat) {
+    public static String toJSONString(Object object, boolean prettyFormat) {
         try {
             if (prettyFormat) {
                 return OBJECT_MAPPER.writerWithDefaultPrettyPrinter().writeValueAsString(object);

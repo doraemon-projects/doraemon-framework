@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class PageImpl<T> implements Page<T> {
 
-    private List<T> content = new ArrayList<>();
+    private final List<T> content = new ArrayList<>();
     private Pageable pageable;
     private long total = 0L;
 
@@ -65,6 +65,6 @@ public class PageImpl<T> implements Page<T> {
 
     @Override
     public int getPageElements() {
-        return content == null ? 0 : content.size();
+        return content.size();
     }
 }

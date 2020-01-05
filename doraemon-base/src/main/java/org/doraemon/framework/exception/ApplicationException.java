@@ -8,7 +8,7 @@ package org.doraemon.framework.exception;
  */
 public class ApplicationException extends Exception {
 
-    private String errorCode;
+    private final String errorCode;
     private Object[] args;
 
     public ApplicationException(String errorCode) {
@@ -41,7 +41,7 @@ public class ApplicationException extends Exception {
     /**
      * 尽量不要调用此方法,错误信息采用ExceptionMessageManager构建
      *
-     * @return
+     * @return 异常信息
      */
     @Override
     public String getMessage() {

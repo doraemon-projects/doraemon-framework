@@ -8,7 +8,7 @@ package org.doraemon.framework.exception;
  */
 public class BusinessException extends RuntimeException {
 
-    private String errorCode;
+    private final String errorCode;
     private Object[] args;
 
     public BusinessException(String errorCode) {

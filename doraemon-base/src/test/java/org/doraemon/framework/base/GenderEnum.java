@@ -1,11 +1,5 @@
 package org.doraemon.framework.base;
 
-import org.doraemon.framework.util.DateUtils;
-import org.doraemon.framework.util.JSON;
-
-import java.util.Date;
-import java.util.UUID;
-
 /**
  * Created with IntelliJ IDEA.
  * Description: 描述
@@ -17,9 +11,9 @@ public enum GenderEnum implements EnumType<Integer> {
     MALE(1, "男", "男性"),
     FEMALE(2, "女", "女性");
 
-    private Integer code;
-    private String name;
-    private String desc;
+    private final Integer code;
+    private final String name;
+    private final String desc;
 
     GenderEnum(Integer code, String name, String desc) {
         this.code = code;

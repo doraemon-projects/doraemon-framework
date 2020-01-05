@@ -34,7 +34,7 @@ public class Sort implements Serializable {
     }
 
     public Sort(Direction direction, String... properties) {
-        this(direction, properties == null ? new ArrayList<String>() : Arrays.asList(properties));
+        this(direction, properties == null ? new ArrayList<>() : Arrays.asList(properties));
     }
 
     public Sort(Direction direction, List<String> properties) {
@@ -43,14 +43,14 @@ public class Sort implements Serializable {
             throw new IllegalArgumentException("You have to provide at least one property to sort by!");
         }
 
-        this.orders = new ArrayList<Order>(properties.size());
+        this.orders = new ArrayList<>(properties.size());
 
         for (String property : properties) {
             this.orders.add(new Order(direction, property));
         }
     }
 
-    public static enum Direction {
+    public enum Direction {
         ASC, DESC;
 
         public boolean isAscending() {

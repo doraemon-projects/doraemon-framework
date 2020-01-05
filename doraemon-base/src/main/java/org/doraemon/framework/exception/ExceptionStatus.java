@@ -8,8 +8,8 @@ package org.doraemon.framework.exception;
  */
 public class ExceptionStatus implements IExceptionCodeProvider {
 
-    private String code;
-    private String message;
+    private final String code;
+    private final String message;
 
     public ExceptionStatus(String code, String message) {
         this.code = code;
