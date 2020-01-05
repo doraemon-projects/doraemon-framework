@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
- * Description: 描述
+ * Description: 采用jackson作为工具类,废弃fastjson
  * Author:      fengwenping
  * Date:        2019/12/29 16:53
  */
