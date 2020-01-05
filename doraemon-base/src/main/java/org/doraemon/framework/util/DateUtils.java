@@ -15,7 +15,7 @@ import java.util.Date;
  * @author:  yuanDong.lin
  * Date:     2019/12/17 22:22
  */
-public class LocalDateTimeUtils {
+public class DateUtils {
 
     public static final String LOCAL_DATE_PATTERN = "yyyy-MM-dd";
 

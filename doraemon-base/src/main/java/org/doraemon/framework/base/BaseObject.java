@@ -5,7 +5,7 @@ import java.util.Date;
 
 /**
  * Created with IntelliJ IDEA.
- * Description: 描述
+ * Description: 基础数据对象
  * Author:      fengwenping
  * Date:        2019/12/15 19:00
  */

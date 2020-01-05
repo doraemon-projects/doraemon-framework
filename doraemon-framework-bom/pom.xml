@@ -50,11 +50,6 @@
             </dependency>
             <dependency>
                 <groupId>org.doraemon.framework</groupId>
-                <artifactId>doraemon-utils</artifactId>
-                <version>${doraemon-framework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.doraemon.framework</groupId>
                 <artifactId>doraemon-mybatis</artifactId>
                 <version>${doraemon-framework.version}</version>
             </dependency>

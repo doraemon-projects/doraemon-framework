@@ -4,11 +4,11 @@ import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
- * Description: 描述
+ * Description: 枚举类型工具类
  * Author:      fengwenping
  * Date:        2019/12/15 23:10
  */
-public class EnumUtils {
+public abstract class EnumUtils {
 
     public static <E extends Enum<E>> Map<String, E> getEnumMap(final Class<E> enumClass) {
         final Map<String, E> map = new LinkedHashMap<>();

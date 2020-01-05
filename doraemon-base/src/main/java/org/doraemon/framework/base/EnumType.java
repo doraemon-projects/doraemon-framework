@@ -17,10 +17,10 @@ public interface EnumType<K> {
     String getDesc();
 
     default String info() {
-        return String.format("{\"code\": \" %s\",\"name\":\" %s\",\"desc\":\" %s\"}", this.getCode(), this.getName(), this.getDesc());
+        return String.format("{\"code\":\"%s\",\"name\":\"%s\",\"desc\":\"%s\"}", this.getCode(), this.getName(), this.getDesc());
     }
 
-    static <T extends EnumType, K> T fromValue(Class<T> enumType, K value) {
+    static <T extends EnumType<K>, K> T fromValue(Class<T> enumType, K value) {
         final T[] enumConstants = enumType.getEnumConstants();
         for (T t : enumConstants) {
             if (Objects.equals(t.getCode(), value)) {
