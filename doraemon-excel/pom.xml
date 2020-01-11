@@ -3,11 +3,11 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.doraemon.framework</groupId>
-    <artifactId>doraemon-base</artifactId>
+    <artifactId>doraemon-excel</artifactId>
     <version>0.0.1.SNAPSHOT</version>
 
-    <name>Doraemon Base</name>
-    <description>Doraemon Base</description>
+    <name>Doraemon Excel Assistant</name>
+    <description>Doraemon Excel Assistant</description>
     <url>https://github.com/doraemon-projects/doraemon-framework</url>
     <organization>
         <name>jfteam</name>
@@ -40,16 +40,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.25</version>
+            <groupId>org.doraemon.framework</groupId>
+            <artifactId>doraemon-base</artifactId>
+            <version>${doraemon-framework.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.10.1</version>
+            <groupId>javax.inject</groupId>
+            <artifactId>javax.inject</artifactId>
+            <version>1</version>
         </dependency>
-
         <!--test-->
         <dependency>
             <groupId>junit</groupId>

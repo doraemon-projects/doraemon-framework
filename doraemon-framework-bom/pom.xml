@@ -50,7 +50,22 @@
             </dependency>
             <dependency>
                 <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-excel</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-message</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
                 <artifactId>doraemon-mybatis</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-rocketmq</artifactId>
                 <version>${doraemon-framework.version}</version>
             </dependency>
             <dependency>
