@@ -45,6 +45,11 @@
             <version>${doraemon-framework.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.doraemon.framework</groupId>
+            <artifactId>doraemon-message</artifactId>
+            <version>${doraemon-framework.version}</version>
+        </dependency>
+        <dependency>
             <groupId>javax.inject</groupId>
             <artifactId>javax.inject</artifactId>
             <version>1</version>

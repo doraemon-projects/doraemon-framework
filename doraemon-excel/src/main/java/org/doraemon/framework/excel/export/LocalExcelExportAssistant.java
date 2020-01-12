@@ -2,7 +2,9 @@ package org.doraemon.framework.excel.export;
 
 import org.doraemon.framework.domain.Page;
 import org.doraemon.framework.exception.ApplicationException;
+import org.doraemon.framework.message.IMessageSender;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
 import java.util.List;
@@ -16,6 +18,10 @@ import java.util.Map;
  */
 @Named
 public class LocalExcelExportAssistant implements ILocalExcelExportAssistant {
+
+    @Inject
+    private IMessageSender<List> messageSender;
+
     @Override
     public <T> int submitExportTask(String excelType, Serializable condition, Page<T> page, Map<String, Object> parameters) throws ApplicationException {
         IExcelDataProvider<T> excelDataProvider = new IExcelDataProvider<T>() {
