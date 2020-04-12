@@ -20,7 +20,6 @@ public abstract class JSON {
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     static {
-
         OBJECT_MAPPER.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
         OBJECT_MAPPER.configure(JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);
         OBJECT_MAPPER.configure(JsonParser.Feature.ALLOW_SINGLE_QUOTES, true);
@@ -117,7 +116,6 @@ public abstract class JSON {
      * JSON转换异常
      */
     public static class JsonCastException extends RuntimeException {
-
         public JsonCastException(String message, Throwable throwable) {
             super(message, throwable);
         }

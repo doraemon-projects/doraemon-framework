@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>org.doraemon.framework</groupId>
+    <artifactId>doraemon-framework-dependencies</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>Doraemon Framework Dependencies</name>
+    <description>Doraemon Framework Dependencies Management</description>
+
+    <url>https://github.com/doraemon-projects/doraemon-framework</url>
+
+    <organization>
+        <name>jfteam</name>
+        <url>http://www.jfteam.org/doraemon-framework</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>fengwp</id>
+            <name>fengwenping</name>
+            <email>fengwp@live.cn</email>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git://github.com/doraemon-projects/doraemon-framework</connection>
+        <developerConnection>scm:git:git://github.com/doraemon-projects/doraemon-framework</developerConnection>
+        <url>https://github.com/github.com/doraemon-projects/doraemon-framework</url>
+    </scm>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <doraemon-framework.version>0.0.1-SNAPSHOT</doraemon-framework.version>
+
+        <spring.version>5.1.4.RELEASE</spring.version>
+        <fastJson.version>1.2.60</fastJson.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-base</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-excel</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-message</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-mybatis</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-rocketmq</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-webmvc</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-lookup-api</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-lookup-service</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>
