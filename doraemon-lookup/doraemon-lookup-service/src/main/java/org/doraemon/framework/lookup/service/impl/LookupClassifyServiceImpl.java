@@ -5,5 +5,5 @@ package org.doraemon.framework.lookup.service.impl;
  * @author: fengwenping
  * @date: 2020-04-12 17:17
  */
-public class LookupServiceImpl extends LookupQueryServiceImpl implements LookupService {
+public class LookupClassifyServiceImpl extends LookupClassifyQueryServiceImpl implements LookupService {
 }

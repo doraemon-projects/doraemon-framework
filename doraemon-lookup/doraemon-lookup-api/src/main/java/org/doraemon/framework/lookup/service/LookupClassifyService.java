@@ -5,5 +5,5 @@ package org.doraemon.framework.lookup.service;
  * @author: fengwenping
  * @date: 2020-04-12 16:17
  */
-public interface LookupService extends LookupQueryService {
+public interface LookupClassifyService extends LookupClassifyQueryService {
 }
