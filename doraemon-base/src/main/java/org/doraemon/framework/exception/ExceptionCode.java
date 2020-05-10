@@ -1,39 +1,53 @@
 package org.doraemon.framework.exception;
 
+import org.doraemon.framework.base.EnumProvider;
+
 /**
  * @Package : com.jfteam.exception
  * @Description :
  * @Author : yuanDong.lin
  * @Date : 2019-08-27 14:32
  */
-public enum ExceptionCode {
-    PARAM_REQUIRED("5000", "参数不能为空"),
-    PARAM_ERROR("5001", "参数异常"),
-    RECORDS_NOT_EXIST("6000", "记录不存在"),
-    RECORDS_EXIST("60001", "记录已经存在"),
-    THIRD_REQUEST_EXCEPTION ("7000","第三方请求异常"),
-    SYSTEM_ERROR("8000","系统异常");
-    private String code;
+public abstract ExceptionCode implements EnumProvider<Integer> {
+    PARAM_REQUIRED(50000, "参数不能为空", "参数不能为空"),
 
-    private String msg;
+    PARAM_ERROR(50001, "参数异常", "参数异常"),
 
-    public String getCode() {
-        return code;
-    }
+    RECORDS_NOT_EXIST(60000, "记录不存在", "记录不存在"),
 
-    public void setCode(String code) {
+    RECORDS_EXIST(60001, "记录已经存在", "记录已经存在"),
+
+    THIRD_REQUEST_EXCEPTION(70000, "第三方请求异常", "第三方请求异常"),
+
+    SYSTEM_ERROR(80000, "系统异常", "系统异常");
+
+    private Integer code;
+    private String name;
+    private String desc;
+
+    ExceptionCode(Integer code, String name, String desc) {
         this.code = code;
+        this.name = name;
+        this.desc = desc;
     }
 
-    public String getMsg() {
-        return msg;
+    @Override
+    public Integer getCode() {
+        return this.code;
     }
 
-    public void setMsg(String msg) {
-        this.msg = msg;
+    @Override
+    public String getName() {
+        return this.name;
     }
 
-    ExceptionCode(String code, String msg) {
-        this.code = code;
-        this.msg = msg;
-    }}
+    @Override
+    public String getDesc() {
+        return this.desc;
+    }
+
+    @Override
+    public String toString() {
+        return this.info();
+    }
+}
