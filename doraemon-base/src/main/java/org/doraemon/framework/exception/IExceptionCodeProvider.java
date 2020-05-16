@@ -13,7 +13,7 @@ public interface IExceptionCodeProvider {
      *
      * @return
      */
-    String getCode();
+    String getErrorCode();
 
     /**
      * 异常描述

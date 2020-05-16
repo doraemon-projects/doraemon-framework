@@ -1,5 +1,7 @@
 package org.doraemon.framework.exception;
 
+import java.util.Objects;
+
 /**
  * Created with IntelliJ IDEA.
  * Description: 运行时异常，在项目运行之后出错则直接中止运行。异常由JVM虚拟机处理
@@ -9,6 +11,7 @@ package org.doraemon.framework.exception;
 public class BusinessException extends RuntimeException {
 
     private final String errorCode;
+    private String message;
     private Object[] args;
 
     public BusinessException(String errorCode) {
@@ -33,6 +36,17 @@ public class BusinessException extends RuntimeException {
         this.args = args;
     }
 
+    public BusinessException(IExceptionCodeProvider exceptionCodeProvider) {
+        this.errorCode = exceptionCodeProvider.getErrorCode();
+        this.message = exceptionCodeProvider.getMessage();
+    }
+
+    public BusinessException(IExceptionCodeProvider exceptionCodeProvider, Object... args) {
+        this.errorCode = exceptionCodeProvider.getErrorCode();
+        this.message = exceptionCodeProvider.getMessage();
+        this.args = args;
+    }
+
     /**
      * 尽量不要调用此方法,错误信息采用ExceptionMessageManager构建
      *
@@ -40,6 +54,9 @@ public class BusinessException extends RuntimeException {
      */
     @Override
     public String getMessage() {
+        if (Objects.nonNull(this.message) && this.message.trim().length() > 0) {
+            return this.message;
+        }
         return ExceptionMessageManager.getMessage(this.errorCode, this.args);
     }
 

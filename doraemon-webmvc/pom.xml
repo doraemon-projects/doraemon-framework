@@ -43,9 +43,23 @@
     </scm>
 
     <properties>
-        <doraemon-framework.version>0.0.1-SNAPSHOT</doraemon-framework.version>
-
     </properties>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>5.2.5.RELEASE</version>
+        </dependency>
+        <dependency>
+            <groupId>org.doraemon.framework</groupId>
+            <artifactId>doraemon-base</artifactId>
+            <version>${doraemon-framework.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
 </project>

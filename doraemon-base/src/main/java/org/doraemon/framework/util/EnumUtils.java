@@ -1,5 +1,7 @@
 package org.doraemon.framework.util;
 
+import org.doraemon.framework.base.IEnumProvider;
+
 import java.util.*;
 
 /**
@@ -9,6 +11,16 @@ import java.util.*;
  * Date:        2019/12/15 23:10
  */
 public abstract class EnumUtils {
+
+    public static <T extends IEnumProvider<K>, K> T fromValue(Class<T> enumType, K value) {
+        final T[] enumConstants = enumType.getEnumConstants();
+        for (T t : enumConstants) {
+            if (Objects.equals(t.getCode(), value)) {
+                return t;
+            }
+        }
+        throw new IllegalArgumentException("no enum value " + value + " of " + enumType.getCanonicalName());
+    }
 
     public static <E extends Enum<E>> Map<String, E> getEnumMap(final Class<E> enumClass) {
         final Map<String, E> map = new LinkedHashMap<>();

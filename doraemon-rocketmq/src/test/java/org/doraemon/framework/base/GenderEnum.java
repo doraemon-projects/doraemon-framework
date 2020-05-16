@@ -6,7 +6,7 @@ package org.doraemon.framework.base;
  * Author:      fengwenping
  * Date:        2020/1/6 0:46
  */
-public enum GenderEnum implements EnumProvider<Integer> {
+public enum GenderEnum implements IEnumProvider<Integer> {
 
     MALE(1, "男", "男性"),
     FEMALE(2, "女", "女性");

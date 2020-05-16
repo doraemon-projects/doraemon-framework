@@ -1,4 +1,4 @@
-package org.doraemon.framework.exception;
+package org.doraemon.framework.webmvc.response;
 
 /**
  * Created with IntelliJ IDEA.

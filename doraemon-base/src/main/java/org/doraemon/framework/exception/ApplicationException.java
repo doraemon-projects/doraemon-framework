@@ -1,5 +1,7 @@
 package org.doraemon.framework.exception;
 
+import java.util.Objects;
+
 /**
  * Created with IntelliJ IDEA.
  * Description: 非运行时异常，在项目运行之前必须处理掉。一般由程序员try catch 掉
@@ -9,6 +11,7 @@ package org.doraemon.framework.exception;
 public class ApplicationException extends Exception {
 
     private final String errorCode;
+    private String message;
     private Object[] args;
 
     public ApplicationException(String errorCode) {
@@ -33,9 +36,15 @@ public class ApplicationException extends Exception {
         this.args = args;
     }
 
-    public ApplicationException(IExceptionCodeProvider exception) {
-        this.errorCode = exception.getCode();
+    public ApplicationException(IExceptionCodeProvider exceptionCodeProvider) {
+        this.errorCode = exceptionCodeProvider.getErrorCode();
+        this.message = exceptionCodeProvider.getMessage();
+    }
 
+    public ApplicationException(IExceptionCodeProvider exceptionCodeProvider, Object... args) {
+        this.errorCode = exceptionCodeProvider.getErrorCode();
+        this.message = exceptionCodeProvider.getMessage();
+        this.args = args;
     }
 
     /**
@@ -45,6 +54,9 @@ public class ApplicationException extends Exception {
      */
     @Override
     public String getMessage() {
+        if (Objects.nonNull(this.message) && this.message.trim().length() > 0) {
+            return this.message;
+        }
         return ExceptionMessageManager.getMessage(this.errorCode, this.args);
     }
 
