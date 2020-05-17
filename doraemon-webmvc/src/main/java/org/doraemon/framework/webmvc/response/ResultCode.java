@@ -16,10 +16,6 @@ public class ResultCode extends BaseCode implements IHttpCodeProvider {
         super(code, name);
     }
 
-    public ResultCode(Integer code, String name, String desc) {
-        super(code, name, desc);
-    }
-
     @Override
     public int getHttpCode() {
         return this.code / 100;

@@ -1,5 +1,6 @@
 package org.doraemon.framework.webmvc.service;
 
+import org.doraemon.framework.base.IDescriptionProvider;
 import org.doraemon.framework.base.IEnumProvider;
 import org.doraemon.framework.exception.ApplicationException;
 
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface SecurityService {
 
-    public static enum Authority implements IEnumProvider<Integer> {
+    public static enum Authority implements IEnumProvider<Integer>, IDescriptionProvider {
         SESSION(10, "session", "session"),
         JWT(20, "jwt", "jwt");
         private Integer code;

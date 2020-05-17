@@ -22,18 +22,10 @@ public interface IEnumProvider<K> {
      */
     String getName();
 
-    /**
-     * 枚举描述
-     *
-     * @return
-     */
-    String getDesc();
-
     default String info() {
-        return String.format("{\"className:\":\"%s\",\"code\":\"%s\",\"name\":\"%s\",\"desc\":\"%s\"}",
+        return String.format("{\"className:\":\"%s\",\"code\":\"%s\",\"name\":\"%s\"}",
                 this.getClass().getName(),
                 this.getCode(),
-                this.getName(),
-                this.getDesc());
+                this.getName());
     }
 }

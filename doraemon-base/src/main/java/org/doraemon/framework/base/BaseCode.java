@@ -9,24 +9,15 @@ public class BaseCode implements IEnumProvider<Integer> {
 
     protected Integer code;
     protected String name;
-    protected String desc;
 
     public BaseCode(Integer code) {
         this.code = code;
         this.name = code.toString();
-        this.desc = this.name;
     }
 
     public BaseCode(Integer code, String name) {
         this.code = code;
         this.name = name;
-        this.desc = name;
-    }
-
-    public BaseCode(Integer code, String name, String desc) {
-        this.code = code;
-        this.name = name;
-        this.desc = desc;
     }
 
     @Override
@@ -37,11 +28,6 @@ public class BaseCode implements IEnumProvider<Integer> {
     @Override
     public String getName() {
         return this.name;
-    }
-
-    @Override
-    public String getDesc() {
-        return this.desc;
     }
 
     @Override

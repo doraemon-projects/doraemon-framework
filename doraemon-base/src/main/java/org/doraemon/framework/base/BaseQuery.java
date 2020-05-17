@@ -1,5 +1,7 @@
 package org.doraemon.framework.base;
 
+import org.doraemon.framework.domain.Pageable;
+
 import java.util.List;
 
 /**

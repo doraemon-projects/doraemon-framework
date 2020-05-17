@@ -35,9 +35,4 @@ public class ExceptionCode extends BaseCode implements IExceptionCodeProvider {
     public String getName() {
         return this.getMessage();
     }
-
-    @Override
-    public String getDesc() {
-        return this.getMessage();
-    }
 }

@@ -8,17 +8,15 @@ package org.doraemon.framework.base;
  */
 public enum GenderEnum implements IEnumProvider<Integer> {
 
-    MALE(1, "男", "男性"),
-    FEMALE(2, "女", "女性");
+    MALE(1, "男"),
+    FEMALE(2, "女");
 
     private final Integer code;
     private final String name;
-    private final String desc;
 
-    GenderEnum(Integer code, String name, String desc) {
+    GenderEnum(Integer code, String name) {
         this.code = code;
         this.name = name;
-        this.desc = desc;
     }
 
     @Override
@@ -29,11 +27,6 @@ public enum GenderEnum implements IEnumProvider<Integer> {
     @Override
     public String getName() {
         return this.name;
-    }
-
-    @Override
-    public String getDesc() {
-        return this.desc;
     }
 
     @Override
