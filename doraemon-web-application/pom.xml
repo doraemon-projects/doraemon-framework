@@ -15,8 +15,8 @@
         <relativePath>../doraemon-framework-bom/pom.xml</relativePath>
     </parent>
 
-    <name>Doraemon Web Application With SpringMVC</name>
-    <description>Doraemon Web Application With SpringMVC</description>
+    <name>Doraemon Application With SpringMVC</name>
+    <description>Doraemon Application With SpringMVC</description>
     <url>https://github.com/doraemon-projects/doraemon-framework</url>
     <organization>
         <name>jfteam</name>
