@@ -6,15 +6,15 @@
         <groupId>org.doraemon.framework</groupId>
         <artifactId>doraemon-framework-bom</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../doraemon-framework-bom/pom.xml</relativePath>
+        <relativePath>../../doraemon-framework-bom/pom.xml</relativePath>
     </parent>
 
     <groupId>org.doraemon.framework</groupId>
-    <artifactId>doraemon-mybatis</artifactId>
+    <artifactId>doraemon-mybatis-generator</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>Doraemon MyBatis</name>
-    <description>Doraemon MyBatis</description>
+    <name>Doraemon MyBatis Generator</name>
+    <description>Doraemon MyBatis Generator</description>
     <url>https://github.com/doraemon-projects/doraemon-framework</url>
     <organization>
         <name>jfteam</name>
@@ -45,19 +45,6 @@
     <properties>
         <doraemon-framework.version>0.0.1-SNAPSHOT</doraemon-framework.version>
     </properties>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <!-- Import dependency management from Spring Boot -->
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.1.13.RELEASE</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
 
     <dependencies>
         <dependency>

@@ -1,6 +1,6 @@
 package org.doraemon.framework.webmvc.interceptor;
 
-import org.doraemon.framework.Constants;
+import org.doraemon.framework.webmvc.WebConstants;
 import org.doraemon.framework.webmvc.service.SecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -22,10 +22,10 @@ public class SecurityInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        final String header = request.getHeader(Constants.WebConstants.X_DORAEMON_TOKEN);
+        final String header = request.getHeader(WebConstants.X_DORAEMON_TOKEN);
         if (Objects.nonNull(header)) {
             securityService.doCheckPermission(SecurityService.Authority.JWT, request, response);
-        } else if (Objects.nonNull(WebUtils.getCookie(request, Constants.WebConstants.X_DORAEMON_SESSION))) {
+        } else if (Objects.nonNull(WebUtils.getCookie(request, WebConstants.X_DORAEMON_SESSION))) {
             return securityService.doCheckPermission(SecurityService.Authority.SESSION, request, response);
         }
         return securityService.doCheckPermission(SecurityService.Authority.SESSION, request, response);
