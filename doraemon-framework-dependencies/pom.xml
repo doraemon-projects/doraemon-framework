@@ -103,6 +103,11 @@
                 <artifactId>doraemon-lookup-service</artifactId>
                 <version>${doraemon-framework.version}</version>
             </dependency>
+            <dependency>
+                <groupId>jakarta.inject</groupId>
+                <artifactId>jakarta.inject-api</artifactId>
+                <version>1.0.1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 </project>

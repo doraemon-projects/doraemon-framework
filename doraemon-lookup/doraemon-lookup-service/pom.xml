@@ -53,9 +53,13 @@
             <version>${doraemon-framework.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.doraemon.framework</groupId>
+            <artifactId>doraemon-mybatis-extension</artifactId>
+            <version>${doraemon-framework.version}</version>
+        </dependency>
+        <dependency>
             <groupId>jakarta.inject</groupId>
             <artifactId>jakarta.inject-api</artifactId>
-            <version>1.0.1</version>
         </dependency>
     </dependencies>
 </project>
