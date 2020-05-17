@@ -22,15 +22,29 @@ public class Result<T> {
         return data;
     }
 
-    public static Result SUCCESS = new Result.Builder<>()
-            .code(ResultCode.SUCCESS.getCode())
-            .message(ResultCode.SUCCESS.getName())
-            .build();
+    public static Result success() {
+        Result result = new Result.Builder<>()
+                .code(ResultCode.SUCCESS.getCode())
+                .message(ResultCode.SUCCESS.getName())
+                .build();
+        return result;
+    }
 
-    public static Result FAILURE = new Builder<>()
-            .code(ResultCode.FAILURE.getCode())
-            .message(ResultCode.FAILURE.getName())
-            .build();
+    public static Result success(Object data) {
+        Result result = new Result.Builder<>()
+                .code(ResultCode.SUCCESS.getCode())
+                .message(ResultCode.SUCCESS.getName())
+                .data(data).build();
+        return result;
+    }
+
+    public static Result failure(Object data) {
+        Result result = new Builder<>()
+                .code(ResultCode.FAILURE.getCode())
+                .message(ResultCode.FAILURE.getName())
+                .build();
+        return result;
+    }
 
     public static final class Builder<T> {
         private Integer code;

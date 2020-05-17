@@ -8,13 +8,17 @@ import org.doraemon.framework.base.BaseCode;
  * @Author : yuanDong.lin
  * @Date : 2019-08-27 14:32
  */
-public class ExceptionCode extends BaseCode<Integer> implements IExceptionCodeProvider {
+public class ExceptionCode extends BaseCode implements IExceptionCodeProvider {
 
     private Integer errorCode;
 
     @Override
     public String getErrorCode() {
         return this.errorCode.toString();
+    }
+
+    ExceptionCode(Integer errorCode, String message) {
+        super(errorCode, message);
     }
 
     @Override

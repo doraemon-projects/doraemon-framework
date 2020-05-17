@@ -2,7 +2,6 @@ package org.doraemon.framework.util;
 
 import org.doraemon.framework.base.BaseCode;
 import org.doraemon.framework.exception.BusinessException;
-import org.doraemon.framework.exception.ExceptionCode;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -81,7 +80,7 @@ public class DateUtils {
             LocalDateTime localDateTime = LocalDateTime.parse(date);
             return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
         } catch (Exception e) {
-            throw new BusinessException(BaseCode.CHECK_ERROR.getCode(), BaseCode.CHECK_ERROR.getName());
+            throw new BusinessException(Objects.toString(BaseCode.CHECK_ERROR.getCode()), BaseCode.CHECK_ERROR.getName());
         }
     }
 
@@ -97,7 +96,7 @@ public class DateUtils {
             LocalDateTime localDateTime = LocalDateTime.parse(date, DateTimeFormatter.ofPattern(pattern));
             return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
         } catch (Exception e) {
-            throw new BusinessException(ExceptionCode.PARAM_ERROR.getCode(), ExceptionCode.PARAM_ERROR.getMsg());
+            throw new BusinessException(Objects.toString(BaseCode.CHECK_ERROR.getCode()), BaseCode.CHECK_ERROR.getName());
         }
     }
 
