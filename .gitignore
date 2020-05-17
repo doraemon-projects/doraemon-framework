@@ -5,3 +5,6 @@ target
 
 #排除eclipse生成的project文件
 .project
+
+*~
+.DS_Store
