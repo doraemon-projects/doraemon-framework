@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Table name="T_LOOKUP_CLASSIFY" packageName="org.jfteam.lookup" model="LookupClassify"/>
+    <Table name="T_LOOKUP_ITEM" packageName="org.jfteam.lookup" model="LookupItem"/>
+</Configuration>

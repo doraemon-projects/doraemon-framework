@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties resource="jdbc.properties"/>
+    <settings>
+        <setting name="logImpl" value="SLF4J"/>
+    </settings>
+    <plugins>
+        <plugin interceptor="org.jfteam.mybatis.interceptor.GeneralSqlInterceptor">
+            <property name="someProperty" value="100"/>
+        </plugin>
+    </plugins>
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${dev.driver}"/>
+                <property name="url" value="${dev.url}"/>
+                <property name="username" value="${dev.username}"/>
+                <property name="password" value="${dev.password}"/>
+            </dataSource>
+        </environment>
+        <environment id="sit">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${dev.driver}"/>
+                <property name="url" value="${dev.url}"/>
+                <property name="username" value="${dev.username}"/>
+                <property name="password" value="${dev.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="org/jfteam/mybatis/mapper/TableMapper.xml"/>
+    </mappers>
+</configuration>

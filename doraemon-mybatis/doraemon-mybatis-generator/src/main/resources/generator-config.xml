@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="dbType" value="MySQL"/>
+        <Property name="schema" value="test"/>
+        <Property name="package" value="org.jfteam.lookup"/>
+        <Property name="modelSuffix" value="VO"/>
+        <Property name="outDirectory" value="/"/>
+    </Properties>
+    <Tables>
+        <Table name="T_LOOKUP_CLASSIFY" model="LookupClassify"/>
+        <Table name="T_LOOKUP_ITEM" model="LookupItem"/>
+    </Tables>
+</Configuration>
