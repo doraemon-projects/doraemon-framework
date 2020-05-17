@@ -73,7 +73,7 @@ public interface BaseDao<T, ID extends Serializable> {
      * @param entity
      * @return
      */
-    int delete(T entity);
+    int deleteByEntity(T entity);
 
     /**
      * 删除数据(根据多个实体)
