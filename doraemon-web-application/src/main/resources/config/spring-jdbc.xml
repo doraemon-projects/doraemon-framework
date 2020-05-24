@@ -7,15 +7,11 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
     <beans profile="dev">
-        <bean id="proxyDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
             <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
             <property name="url" value="${jdbc.url}"/>
             <property name="username" value="${jdbc.username}"/>
             <property name="password" value="${jdbc.password}"/>
-        </bean>
-        <!--打印完整SQL语句-->
-        <bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
-            <constructor-arg ref="proxyDataSource"/>
         </bean>
     </beans>
 
@@ -37,7 +33,7 @@
         <!--使用tx/aop配置-->
         <aop:config>
             <!--通过aop定义事务增强切面-->
-            <aop:pointcut id="serviceMethod" expression="execution(* org.jfteam.service.*.*(..))"/>
+            <aop:pointcut id="serviceMethod" expression="execution(* org.doraemon.service.*.*(..))"/>
             <!--引用事务增强-->
             <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethod"/>
         </aop:config>

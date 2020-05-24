@@ -126,6 +126,7 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                    <compilerArgs>-Xlint</compilerArgs>
                 </configuration>
             </plugin>
             <plugin>

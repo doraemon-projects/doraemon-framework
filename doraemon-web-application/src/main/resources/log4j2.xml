@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN" monitorInterval="500">
     <Properties>
-        <Property name="LOG_HOME">/applogs/ssm-demo</Property>
+        <Property name="LOG_HOME">/Users/fengwenping/Workspace/IdeaProjects/applogs/ssm-demo</Property>
     </Properties>
 
     <Appenders>
