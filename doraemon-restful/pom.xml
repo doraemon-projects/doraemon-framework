@@ -10,11 +10,11 @@
     </parent>
 
     <groupId>org.doraemon.framework</groupId>
-    <artifactId>doraemon-rest</artifactId>
+    <artifactId>doraemon-restful</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>Doraemon Web MVC</name>
-    <description>Doraemon Web MVC</description>
+    <name>Doraemon Restful</name>
+    <description>Doraemon Restful</description>
     <url>https://github.com/doraemon-projects/doraemon-framework</url>
     <organization>
         <name>jfteam</name>
