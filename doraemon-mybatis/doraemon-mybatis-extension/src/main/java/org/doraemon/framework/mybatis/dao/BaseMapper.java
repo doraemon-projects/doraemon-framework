@@ -13,7 +13,7 @@ import java.util.List;
  * @author: fengwenping
  * @date: 2019-07-12 21:25
  */
-public interface BaseDao<T, ID extends Serializable> {
+public interface BaseMapper<T, ID extends Serializable> {
 
     /**
      * 插入数据(根据实体)

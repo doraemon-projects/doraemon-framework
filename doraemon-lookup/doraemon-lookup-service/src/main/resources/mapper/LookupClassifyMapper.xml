@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.doraemon.framework.lookup.dao.LookupClassifyDao">
+<mapper namespace="org.doraemon.framework.lookup.mapper.LookupClassifyMapper">
     <resultMap id="BaseResultMap" type="org.doraemon.framework.lookup.bean.LookupClassify">
         <id column="classify_id" jdbcType="BIGINT" property="classifyId"/>
         <result column="created_by" jdbcType="BIGINT" property="createdBy"/>
