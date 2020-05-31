@@ -14,6 +14,11 @@ public class PageRequest implements Pageable, Serializable {
     private final int pageSize;
     private Sort sort;
 
+    public PageRequest() {
+        this.pageNumber = 0;
+        this.pageSize = 20;
+    }
+
     public PageRequest(int pageNumber, int pageSize) {
         if (pageNumber < 0) {
             throw new IllegalArgumentException("Page index must not be less than zero!");
