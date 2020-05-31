@@ -172,7 +172,7 @@ public interface BaseMapper<T, ID extends Serializable> {
      *
      * @return
      */
-    Iterable<T> findAll();
+    List<T> findAll();
 
     /**
      * 查询多条数据(按照实体查询)
@@ -181,7 +181,7 @@ public interface BaseMapper<T, ID extends Serializable> {
      * @param <S>
      * @return
      */
-    <S extends T> Iterable<T> findMultiByEntity(S entity);
+    <S extends T> List<T> findMultiByEntity(S entity);
 
     /**
      * 查询多条数据(根据多个ID查询)
@@ -189,7 +189,7 @@ public interface BaseMapper<T, ID extends Serializable> {
      * @param ids
      * @return
      */
-    Iterable<T> findMultiByIds(Iterable<ID> ids);
+    List<T> findMultiByIds(Iterable<ID> ids);
 
     /**
      * 查询多条数据(按照排序返回)
