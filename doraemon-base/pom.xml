@@ -41,18 +41,15 @@
         <url>https://github.com/doraemon-projects/doraemon-framework</url>
     </scm>
 
-    <properties>
-        <doraemon-framework.version>0.0.1-SNAPSHOT</doraemon-framework.version>
-    </properties>
-
     <dependencies>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
+            <groupId>org.doraemon.framework</groupId>
+            <artifactId>doraemon-core</artifactId>
+            <version>${doraemon-framework.version}</version>
         </dependency>
         <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>

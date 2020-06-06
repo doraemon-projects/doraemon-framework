@@ -5,14 +5,15 @@ import org.doraemon.framework.message.IMessageSender;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+
+import javax.inject.Named;
 
 /**
  * @description: 消息发送组件
  * @author: fengwenping
  * @date: 2018/12/14 16:36
  */
-@Component("defaultRocketMQMessageSender")
+@Named("defaultRocketMQMessageSender")
 public class DefaultRocketMQMessageSender extends IMessageSender {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DefaultRocketMQMessageSender.class);

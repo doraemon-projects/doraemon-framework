@@ -1,8 +1,7 @@
 package org.doraemon.framework.webmvc.advice;
 
-import org.doraemon.framework.base.BaseCode;
 import org.doraemon.framework.util.JSON;
-import org.doraemon.framework.webmvc.response.Result;
+import org.doraemon.framework.response.Result;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;

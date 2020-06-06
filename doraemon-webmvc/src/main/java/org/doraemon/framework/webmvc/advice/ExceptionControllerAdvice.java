@@ -1,9 +1,9 @@
 package org.doraemon.framework.webmvc.advice;
 
-import org.doraemon.framework.base.BaseCode;
 import org.doraemon.framework.exception.ApplicationException;
-import org.doraemon.framework.exception.BusinessException;
-import org.doraemon.framework.webmvc.response.Result;
+import org.doraemon.framework.exception.ApplicationRuntimeException;
+import org.doraemon.framework.response.Result;
+import org.doraemon.framework.webmvc.WebConstants;
 import org.springframework.util.CollectionUtils;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @description: 描述
@@ -28,20 +29,22 @@ public class ExceptionControllerAdvice {
             final ObjectError objectError = allErrors.get(0);
             message = objectError.getDefaultMessage();
         }
-        return new Result.Builder<String>().code(BaseCode.CHECK_ERROR.getCode()).message(message).build();
+        return new Result.Builder<String>()
+                .code(Objects.toString(WebConstants.ResultCode.CHECK_ERROR.getCode()))
+                .message(message).build();
     }
 
-    @ExceptionHandler(BusinessException.class)
-    public Result<String> businessException(BusinessException exception) {
+    @ExceptionHandler(ApplicationRuntimeException.class)
+    public Result<String> businessException(ApplicationRuntimeException exception) {
         return new Result.Builder<String>()
-                .code(Integer.getInteger(exception.getErrorCode()))
+                .code(exception.getErrorCode())
                 .message(exception.getMessage()).build();
     }
 
     @ExceptionHandler(ApplicationException.class)
     public Result<String> applicationException(ApplicationException exception) {
         return new Result.Builder<String>()
-                .code(Integer.getInteger(exception.getErrorCode()))
+                .code(exception.getErrorCode())
                 .message(exception.getMessage()).build();
     }
 }

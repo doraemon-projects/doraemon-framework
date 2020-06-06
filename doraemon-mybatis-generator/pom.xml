@@ -10,16 +10,17 @@
     </parent>
 
     <groupId>org.doraemon.framework</groupId>
-    <artifactId>doraemon-rocketmq</artifactId>
+    <artifactId>doraemon-mybatis-generator</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>Doraemon RocketMQ</name>
-    <description>Doraemon RocketMQ</description>
+    <name>Doraemon MyBatis Generator</name>
+    <description>Doraemon MyBatis Generator</description>
     <url>https://github.com/doraemon-projects/doraemon-framework</url>
     <organization>
         <name>jfteam</name>
         <url>http://www.jfteam.org/doraemon-framework</url>
     </organization>
+
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -43,40 +44,26 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.freemarker</groupId>
+            <artifactId>freemarker</artifactId>
+        </dependency>
+        <dependency>
             <groupId>org.doraemon.framework</groupId>
-            <artifactId>doraemon-message</artifactId>
+            <artifactId>doraemon-core</artifactId>
             <version>${doraemon-framework.version}</version>
         </dependency>
-
-        <dependency>
-            <groupId>org.apache.rocketmq</groupId>
-            <artifactId>rocketmq-client</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>jakarta.inject</groupId>
-            <artifactId>jakarta.inject-api</artifactId>
-        </dependency>
-
-        <!--test-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <encoding>${project.build.sourceEncoding}</encoding>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
