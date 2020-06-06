@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.doraemon.framework</groupId>
+        <artifactId>doraemon-framework-bom</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <relativePath>../doraemon-framework-bom/pom.xml</relativePath>
+    </parent>
+
+    <groupId>org.doraemon.framework</groupId>
+    <artifactId>doraemon-core</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+
+    <name>Doraemon Core</name>
+    <description>Doraemon Core</description>
+    <url>https://github.com/doraemon-projects/doraemon-framework</url>
+    <organization>
+        <name>jfteam</name>
+        <url>http://www.jfteam.org/doraemon-framework</url>
+    </organization>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>fengwp</id>
+            <name>fengwenping</name>
+            <email>fengwp@live.cn</email>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git://github.com/doraemon-projects/doraemon-framework</connection>
+        <developerConnection>scm:git://github.com/doraemon-projects/doraemon-framework</developerConnection>
+        <url>https://github.com/doraemon-projects/doraemon-framework</url>
+    </scm>
+
+    <properties>
+        <doraemon-framework.version>0.0.1-SNAPSHOT</doraemon-framework.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+            <scope>provided</scope>
+        </dependency>
+        <!--test-->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>jakarta.xml.bind</groupId>
+            <artifactId>jakarta.xml.bind-api</artifactId>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
