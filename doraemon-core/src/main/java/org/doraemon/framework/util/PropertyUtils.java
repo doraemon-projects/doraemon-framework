@@ -1,5 +1,6 @@
 package org.doraemon.framework.util;
 
+import org.doraemon.framework.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,7 +18,9 @@ public final class PropertyUtils {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PropertyUtils.class);
 
-    private static final String PROPERTIES_FILE_NAME = "application.properties";
+    private static final String PROPERTIES_FILE_EXT_NAME = ".properties";
+
+    private static final String APPLICATION_PROPERTIES_FILE_NAME = "application";
 
     private PropertyUtils() {
     }
@@ -37,19 +40,38 @@ public final class PropertyUtils {
         } catch (IOException e) {
             LOGGER.error("需要加载的properties文件: {} 不存在,请检查文件是否存在.", fileName, e);
         } finally {
-            if (inputStream != null) {
-                try {
-                    inputStream.close();
-                } catch (IOException e) {
-                    LOGGER.error("关闭IO异常.", e);
-                }
-            }
+            IOUtils.close(inputStream);
         }
         return properties;
     }
 
+    /**
+     * 获取系统配置
+     *
+     * @return
+     */
     public static Properties getApplicationConfig() {
-        return PropertyUtils.getProperties(PROPERTIES_FILE_NAME);
+        return PropertyUtils.getProperties(APPLICATION_PROPERTIES_FILE_NAME + PROPERTIES_FILE_EXT_NAME);
+    }
+
+    /**
+     * 获取系统配置(根据环境变化的配置)
+     *
+     * @param env
+     * @return
+     */
+    public static Properties getApplicationEnvConfig(String env) {
+        if (StringUtils.isNotBlank(env)) {
+            return PropertyUtils.getProperties(new StringBuilder(APPLICATION_PROPERTIES_FILE_NAME)
+                    .append("-")
+                    .append(env)
+                    .append(PROPERTIES_FILE_EXT_NAME).toString()
+            );
+        } else {
+            return PropertyUtils.getProperties(new StringBuilder(APPLICATION_PROPERTIES_FILE_NAME)
+                    .append(Constants.Environment.DEFAULT_SPRING_PROFILES_ACTIVE)
+                    .append(PROPERTIES_FILE_EXT_NAME).toString());
+        }
     }
 
     private static String getProperty(final Properties properties, final String key, final String defaultValue) {

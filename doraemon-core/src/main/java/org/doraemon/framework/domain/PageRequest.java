@@ -8,7 +8,7 @@ import java.io.Serializable;
  * author:      fengwenping
  * date:        2019/7/14 19:34
  */
-public class PageRequest implements Pageable, Serializable {
+public class PageRequest implements Serializable {
     public static final int DEFAULT_PAGE_SIZE = 20;
     private final int pageNumber;
     private final int pageSize;
@@ -39,17 +39,14 @@ public class PageRequest implements Pageable, Serializable {
         this.sort = sort;
     }
 
-    @Override
     public int getPageSize() {
         return pageSize;
     }
 
-    @Override
     public int getPageNumber() {
         return pageNumber;
     }
 
-    @Override
     public Sort getSort() {
         return sort;
     }

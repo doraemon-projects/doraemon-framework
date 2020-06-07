@@ -3,12 +3,12 @@
     <Properties>
         <Property name="dbType" value="MySQL"/>
         <Property name="schema" value="test"/>
-        <Property name="package" value="org.jfteam.lookup"/>
+        <Property name="package" value="org.doraemon.framework.lookup"/>
         <Property name="modelSuffix" value="VO"/>
         <Property name="outDirectory" value="/"/>
     </Properties>
     <Tables>
-        <Table name="T_LOOKUP_CLASSIFY" model="LookupClassify"/>
-        <Table name="T_LOOKUP_ITEM" model="LookupItem"/>
+        <Table name="sys_lookup_classify" model="LookupClassify"/>
+        <Table name="sys_lookup_item" model="LookupItem"/>
     </Tables>
 </Configuration>

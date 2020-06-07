@@ -13,20 +13,20 @@ import java.util.List;
 public class PageImpl<T> implements Page<T> {
 
     private final List<T> content = new ArrayList<>();
-    private Pageable pageable;
+    private PageRequest pageRequest;
     private long total = 0L;
 
-    public PageImpl(List<T> content, Pageable pageable, long total) {
-        this(content, pageable);
+    public PageImpl(List<T> content, PageRequest pageRequest, long total) {
+        this(content, pageRequest);
         this.total = total;
     }
 
-    public PageImpl(List<T> content, Pageable pageable) {
+    public PageImpl(List<T> content, PageRequest pageRequest) {
         if (content == null) {
             throw new IllegalArgumentException("Content must not be null!");
         }
         this.content.addAll(content);
-        this.pageable = pageable;
+        this.pageRequest = pageRequest;
     }
 
     public PageImpl(List<T> content) {
@@ -35,12 +35,12 @@ public class PageImpl<T> implements Page<T> {
 
     @Override
     public int getNumber() {
-        return pageable == null ? 0 : pageable.getPageNumber();
+        return pageRequest == null ? 0 : pageRequest.getPageNumber();
     }
 
     @Override
     public int getSize() {
-        return pageable == null ? 0 : pageable.getPageSize();
+        return pageRequest == null ? 0 : pageRequest.getPageSize();
     }
 
     @Override
@@ -50,7 +50,7 @@ public class PageImpl<T> implements Page<T> {
 
     @Override
     public Sort getSort() {
-        return pageable == null ? null : pageable.getSort();
+        return pageRequest == null ? null : pageRequest.getSort();
     }
 
     @Override

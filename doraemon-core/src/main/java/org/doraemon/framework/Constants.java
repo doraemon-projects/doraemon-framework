@@ -49,11 +49,16 @@ public abstract class Constants {
         public static final IEnumProvider<Integer> TIMEOUT = new BaseCode(50400, "服务超时");
     }
 
-    public static class Environment{
+    /**
+     * 环境信息
+     */
+    public static class Environment {
         public static final String DEV = "dev";
         public static final String SIT = "sit";
         public static final String UAT = "uat";
         public static final String BETA = "beta";
         public static final String PRODUCTION = "production";
+        public static final String DEFAULT_SPRING_PROFILES_ACTIVE = DEV;
+        public static final String SPRING_PROFILES_ACTIVE = "spring.profiles.active";
     }
 }

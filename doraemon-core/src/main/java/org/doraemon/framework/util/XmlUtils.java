@@ -19,7 +19,6 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.lang.reflect.Field;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,7 +55,7 @@ public final class XmlUtils {
             final Node item = nodeList.item(i);
             final NamedNodeMap attributes = item.getAttributes();
             final Field[] fields = tClass.getDeclaredFields();
-            T t = tClass.newInstance();
+            T t = tClass.getDeclaredConstructor().newInstance();
             final int i1 = attributes.getLength();
             for (int i2 = 0; i2 < i1; i2++) {
                 for (Field field : fields) {
@@ -104,10 +103,10 @@ public final class XmlUtils {
     }
 
     public static <T> T convertXml2Object(Class<T> clazz, String xml) {
-        return convertXml2Object(clazz, xml, Constants.CharsetConfig.defaultCharset());
+        return convertXml2Object(clazz, xml, Constants.CharsetConfig.utf8Charset().name());
     }
 
-    public static <T> T convertXml2Object(Class<T> clazz, String xml, Charset charset) {
+    public static <T> T convertXml2Object(Class<T> clazz, String xml, String charset) {
         T object = null;
         if (xml != null && !"".equals(xml)) {
             ByteArrayInputStream byteArrayInputStream = null;
@@ -126,7 +125,7 @@ public final class XmlUtils {
         return object;
     }
 
-    public static <T> String convertObject2Xml(T object, Charset charset) {
+    public static <T> String convertObject2Xml(T object, String charset) {
         String xml = "";
         ByteArrayOutputStream byteArrayOutputStream = null;
         try {
@@ -135,7 +134,7 @@ public final class XmlUtils {
             // 是否格式化生成xml
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
             // 设置编码方式
-            marshaller.setProperty(Marshaller.JAXB_ENCODING, charset.name());
+            marshaller.setProperty(Marshaller.JAXB_ENCODING, charset);
             marshaller.setProperty(Marshaller.JAXB_FRAGMENT, false);
             byteArrayOutputStream = new ByteArrayOutputStream();
             marshaller.marshal(object, byteArrayOutputStream);
@@ -150,6 +149,6 @@ public final class XmlUtils {
     }
 
     public static <T> String convertObject2Xml(T object) {
-        return convertObject2Xml(object, Constants.CharsetConfig.defaultCharset());
+        return convertObject2Xml(object, Constants.CharsetConfig.utf8Charset().name());
     }
 }

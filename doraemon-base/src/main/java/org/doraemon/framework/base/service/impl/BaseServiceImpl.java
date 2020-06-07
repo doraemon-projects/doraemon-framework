@@ -1,9 +1,9 @@
 package org.doraemon.framework.base.service.impl;
 
-import org.doraemon.framework.base.dao.BaseMapper;
+import org.doraemon.framework.base.dao.BaseDao;
 import org.doraemon.framework.base.service.BaseService;
 import org.doraemon.framework.domain.Page;
-import org.doraemon.framework.domain.Pageable;
+import org.doraemon.framework.domain.PageRequest;
 import org.doraemon.framework.domain.Sort;
 
 import java.io.Serializable;
@@ -15,9 +15,9 @@ import java.util.Objects;
  * @author: fengwenping
  * @date: 2020-05-31 18:43
  */
-public abstract class BaseServiceImpl<T, ID extends Serializable> implements BaseService {
+public abstract class BaseServiceImpl<T, ID extends Serializable> implements BaseService<T, ID> {
 
-    public abstract BaseMapper<T, ID> getDao();
+    protected abstract BaseDao<T, ID> getDao();
 
     /**
      * 插入数据(根据实体)
@@ -26,7 +26,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param <S>
      * @return
      */
-    protected <S extends T> S insert(S entity) {
+    @Override
+    public <S extends T> S insert(S entity) {
         this.getDao().insert(entity);
         return entity;
     }
@@ -38,8 +39,10 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param <S>
      * @return
      */
-    protected <S extends T> int insertSelective(S entity) {
-        return this.getDao().insertSelective(entity);
+    @Override
+    public <S extends T> S insertSelective(S entity) {
+        this.getDao().insertSelective(entity);
+        return entity;
     }
 
 
@@ -50,7 +53,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param <S>
      * @return
      */
-    protected <S extends T> int insertInBatch(List<S> entities) {
+    @Override
+    public <S extends T> int insertInBatch(List<S> entities) {
         return this.getDao().insertInBatch(entities);
     }
 
@@ -61,7 +65,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param <S>
      * @return
      */
-    protected <S extends T> int insertSelectiveInBatch(List<S> entities) {
+    @Override
+    public <S extends T> int insertSelectiveInBatch(List<S> entities) {
         return this.getDao().insertSelectiveInBatch(entities);
     }
 
@@ -70,7 +75,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      *
      * @param id
      */
-    protected int deleteById(ID id) {
+    @Override
+    public int deleteById(ID id) {
         return this.getDao().deleteById(id);
     }
 
@@ -80,7 +86,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param ids
      * @return
      */
-    protected int deleteInIds(List<ID> ids) {
+    @Override
+    public int deleteInIds(List<ID> ids) {
         return this.getDao().deleteInIds(ids);
     }
 
@@ -90,7 +97,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param entity
      * @return
      */
-    protected int deleteByEntity(T entity) {
+    @Override
+    public int deleteByEntity(T entity) {
         return this.getDao().deleteByEntity(entity);
     }
 
@@ -100,7 +108,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param entities
      * @return
      */
-    protected int deleteInBatch(List<? extends T> entities) {
+    @Override
+    public int deleteInBatch(List<? extends T> entities) {
         return this.getDao().deleteInBatch(entities);
     }
 
@@ -109,7 +118,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      *
      * @return
      */
-    protected int deleteAll() {
+    @Override
+    public int deleteAll() {
         return this.getDao().deleteAll();
     }
 
@@ -121,7 +131,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param <S>
      * @return
      */
-    protected <S extends T> int updateById(ID id, S entity) {
+    @Override
+    public <S extends T> int updateById(ID id, S entity) {
         return this.getDao().updateById(id, entity);
     }
 
@@ -133,7 +144,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param <S>
      * @return
      */
-    protected <S extends T> int updateSelectiveById(ID id, S entity) {
+    @Override
+    public <S extends T> int updateSelectiveById(ID id, S entity) {
         return this.getDao().updateSelectiveById(id, entity);
     }
 
@@ -145,7 +157,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param <S>
      * @return
      */
-    protected <S extends T> int updateInIds(List<ID> ids, S entity) {
+    @Override
+    public <S extends T> int updateInIds(List<ID> ids, S entity) {
         return this.getDao().updateInIds(ids, entity);
     }
 
@@ -157,7 +170,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param <S>
      * @return
      */
-    protected <S extends T> int updateSelectiveInIds(List<ID> ids, S entity) {
+    @Override
+    public <S extends T> int updateSelectiveInIds(List<ID> ids, S entity) {
         return this.getDao().updateSelectiveInIds(ids, entity);
     }
 
@@ -169,7 +183,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param <S>
      * @return
      */
-    protected <S extends T> int updateByEntity(S source, S entity) {
+    @Override
+    public <S extends T> int updateByEntity(S source, S entity) {
         return this.getDao().updateByEntity(source, entity);
     }
 
@@ -181,7 +196,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param <S>
      * @return
      */
-    protected <S extends T> int updateSelectiveByEntity(S source, S entity) {
+    @Override
+    public <S extends T> int updateSelectiveByEntity(S source, S entity) {
         return this.getDao().updateSelectiveByEntity(source, entity);
     }
 
@@ -192,7 +208,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param <S>
      * @return
      */
-    protected <S extends T> int updateAll(S entity) {
+    @Override
+    public <S extends T> int updateAll(S entity) {
         return this.getDao().updateAll(entity);
     }
 
@@ -202,7 +219,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param id
      * @return
      */
-    protected <S extends T> S findOneById(ID id) {
+    @Override
+    public <S extends T> S findOneById(ID id) {
         return this.getDao().findOneById(id);
     }
 
@@ -213,7 +231,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param <S>
      * @return
      */
-    protected <S extends T> T findOneByEntity(S entity) {
+    @Override
+    public <S extends T> T findOneByEntity(S entity) {
         return this.getDao().findOneByEntity(entity);
     }
 
@@ -222,7 +241,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      *
      * @return
      */
-    protected List<T> findAll() {
+    @Override
+    public List<T> findAll() {
         return this.getDao().findAll();
     }
 
@@ -233,7 +253,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param <S>
      * @return
      */
-    protected <S extends T> List<T> findMultiByEntity(S entity) {
+    @Override
+    public <S extends T> List<T> findMultiByEntity(S entity) {
         return this.getDao().findMultiByEntity(entity);
     }
 
@@ -243,7 +264,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param ids
      * @return
      */
-    protected List<T> findMultiByIds(List<ID> ids) {
+    @Override
+    public List<T> findMultiByIds(List<ID> ids) {
         return this.getDao().findMultiByIds(ids);
     }
 
@@ -253,7 +275,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param sort
      * @return
      */
-    protected List<T> findMultiBySort(Sort sort) {
+    @Override
+    public List<T> findMultiBySort(Sort sort) {
         return this.getDao().findMultiBySort(sort);
     }
 
@@ -262,7 +285,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      *
      * @return
      */
-    protected int findCount() {
+    @Override
+    public int findCount() {
         return this.getDao().findCount();
     }
 
@@ -273,28 +297,31 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param <S>
      * @return
      */
-    protected <S extends T> int findCountByEntity(S entity) {
+    @Override
+    public <S extends T> int findCountByEntity(S entity) {
         return this.getDao().findCountByEntity(entity);
     }
 
     /**
      * 查询多条数据(按照分页信息)
      *
-     * @param pageable
+     * @param pageRequest
      * @return
      */
-    protected Page<T> findPage(Pageable pageable) {
-        return this.getDao().findPage(pageable);
+    @Override
+    public Page<T> findPage(PageRequest pageRequest) {
+        return this.getDao().findPage(pageRequest);
     }
 
     /**
      * 统计数量(按照分页信息)
      *
-     * @param pageable
+     * @param pageRequest
      * @return
      */
-    protected int findPageCount(Pageable pageable) {
-        return this.getDao().findPageCount(pageable);
+    @Override
+    public int findPageCount(PageRequest pageRequest) {
+        return this.getDao().findPageCount(pageRequest);
     }
 
     /**
@@ -303,7 +330,8 @@ public abstract class BaseServiceImpl<T, ID extends Serializable> implements Bas
      * @param id
      * @return
      */
-    protected boolean existsById(ID id) {
+    @Override
+    public boolean existsById(ID id) {
         return Objects.nonNull(this.findOneById(id));
     }
 }

@@ -3,13 +3,13 @@
 <configuration>
     <properties resource="jdbc.properties"/>
     <settings>
-        <setting name="logImpl" value="SLF4J"/>
+        <setting name="logImpl" value="LOG4J2"/>
     </settings>
-    <plugins>
-        <plugin interceptor="org.jfteam.mybatis.interceptor.GeneralSqlInterceptor">
-            <property name="someProperty" value="100"/>
-        </plugin>
-    </plugins>
+<!--    <plugins>-->
+<!--        <plugin interceptor="org.doraemon.framework.base.dao.mybatis.plugin.PaginationPlugin">-->
+<!--            <property name="someProperty" value="100"/>-->
+<!--        </plugin>-->
+<!--    </plugins>-->
     <environments default="dev">
         <environment id="dev">
             <transactionManager type="JDBC"/>
@@ -31,6 +31,6 @@
         </environment>
     </environments>
     <mappers>
-        <mapper resource="org/jfteam/mybatis/mapper/TableMapper.xml"/>
+        <mapper resource="org/doraemon/framework/mybatis/dao/TableMapper.xml"/>
     </mappers>
 </configuration>

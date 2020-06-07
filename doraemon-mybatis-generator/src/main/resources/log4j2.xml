@@ -7,7 +7,7 @@
     </Appenders>
     <Loggers>
         <!-- 下面是打印通过log4j2打印出mybatis语句的配置-->
-        <Logger name="org.jfteam.mybatis.dao" level="DEBUG" additivity="false">
+        <Logger name="org.doraemon.framework.mybatis.dao" level="DEBUG" additivity="false">
             <AppenderRef ref="Console"/>
         </Logger>
         <Root level="INFO">

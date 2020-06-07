@@ -1,5 +1,6 @@
-package org.doraemon.framework.base.service;
+package org.doraemon.framework.base.dao;
 
+import org.apache.ibatis.annotations.Param;
 import org.doraemon.framework.domain.Page;
 import org.doraemon.framework.domain.PageRequest;
 import org.doraemon.framework.domain.Sort;
@@ -8,11 +9,12 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * @description: 通用基础服务接口
+ * @description: 描述
  * @author: fengwenping
- * @date: 2020-05-31 18:42
+ * @date: 2019-07-12 21:25
  */
-public interface BaseService<T, ID extends Serializable> {
+public interface BaseDao<T, ID extends Serializable> {
+
     /**
      * 插入数据(根据实体)
      *
@@ -20,7 +22,7 @@ public interface BaseService<T, ID extends Serializable> {
      * @param <S>
      * @return
      */
-    <S extends T> S insert(S entity);
+    <S extends T> int insert(S entity);
 
     /**
      * 插入数据(选择性插入)
@@ -29,7 +31,7 @@ public interface BaseService<T, ID extends Serializable> {
      * @param <S>
      * @return
      */
-    <S extends T> S insertSelective(S entity);
+    <S extends T> int insertSelective(S entity);
 
 
     /**
@@ -39,7 +41,7 @@ public interface BaseService<T, ID extends Serializable> {
      * @param <S>
      * @return
      */
-    <S extends T> int insertInBatch(List<S> entities);
+    <S extends T> int insertInBatch(Iterable<S> entities);
 
     /**
      * 插入数据(选择性批量插入)
@@ -48,7 +50,7 @@ public interface BaseService<T, ID extends Serializable> {
      * @param <S>
      * @return
      */
-    <S extends T> int insertSelectiveInBatch(List<S> entities);
+    <S extends T> int insertSelectiveInBatch(Iterable<S> entities);
 
     /**
      * 删除数据(根据主键删除)
@@ -63,7 +65,7 @@ public interface BaseService<T, ID extends Serializable> {
      * @param ids
      * @return
      */
-    int deleteInIds(List<ID> ids);
+    int deleteInIds(Iterable<ID> ids);
 
     /**
      * 删除数据(根据实体删)
@@ -79,7 +81,7 @@ public interface BaseService<T, ID extends Serializable> {
      * @param entities
      * @return
      */
-    int deleteInBatch(List<? extends T> entities);
+    int deleteInBatch(Iterable<? extends T> entities);
 
     /**
      * 删除数据(所有)
@@ -96,7 +98,7 @@ public interface BaseService<T, ID extends Serializable> {
      * @param <S>
      * @return
      */
-    <S extends T> int updateById(ID id, S entity);
+    <S extends T> int updateById(@Param("id") ID id, @Param("entity") S entity);
 
     /**
      * 选择性的更新数据(根据ID更新为目标实体)
@@ -106,7 +108,7 @@ public interface BaseService<T, ID extends Serializable> {
      * @param <S>
      * @return
      */
-    <S extends T> int updateSelectiveById(ID id, S entity);
+    <S extends T> int updateSelectiveById(@Param("id") ID id, @Param("entity") S entity);
 
     /**
      * 更新数据(根据多个更新为目标实体)
@@ -116,7 +118,7 @@ public interface BaseService<T, ID extends Serializable> {
      * @param <S>
      * @return
      */
-    <S extends T> int updateInIds(List<ID> ids, S entity);
+    <S extends T> int updateInIds(@Param("ids") Iterable<ID> ids, @Param("entity") S entity);
 
     /**
      * 选择性的更新数据(根据多个更新为目标实体)
@@ -126,7 +128,7 @@ public interface BaseService<T, ID extends Serializable> {
      * @param <S>
      * @return
      */
-    <S extends T> int updateSelectiveInIds(List<ID> ids, S entity);
+    <S extends T> int updateSelectiveInIds(@Param("ids") Iterable<ID> ids, @Param("entity") S entity);
 
     /**
      * 更新数据(按照原实体更新为目标实体)
@@ -136,7 +138,7 @@ public interface BaseService<T, ID extends Serializable> {
      * @param <S>
      * @return
      */
-    <S extends T> int updateByEntity(S source, S entity);
+    <S extends T> int updateByEntity(@Param("source") S source, @Param("entity") S entity);
 
     /**
      * 更新数据(选择性的更新数据,按照原实体更新为目标实体)
@@ -146,7 +148,7 @@ public interface BaseService<T, ID extends Serializable> {
      * @param <S>
      * @return
      */
-    <S extends T> int updateSelectiveByEntity(S source, S entity);
+    <S extends T> int updateSelectiveByEntity(@Param("source") S source, @Param("entity") S entity);
 
     /**
      * 更新数据(更新所有的记录)
@@ -155,7 +157,7 @@ public interface BaseService<T, ID extends Serializable> {
      * @param <S>
      * @return
      */
-    <S extends T> int updateAll(S entity);
+    <S extends T> int updateAll(@Param("entity") S entity);
 
     /**
      * 查询单条数据(根据ID查找)
@@ -196,7 +198,7 @@ public interface BaseService<T, ID extends Serializable> {
      * @param ids
      * @return
      */
-    List<T> findMultiByIds(List<ID> ids);
+    List<T> findMultiByIds(Iterable<ID> ids);
 
     /**
      * 查询多条数据(按照排序返回)
@@ -237,13 +239,4 @@ public interface BaseService<T, ID extends Serializable> {
      * @return
      */
     int findPageCount(PageRequest pageRequest);
-
-
-    /**
-     * 判断对象是否存在
-     *
-     * @param id
-     * @return
-     */
-    boolean existsById(ID id);
 }
