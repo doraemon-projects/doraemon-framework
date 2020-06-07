@@ -12,10 +12,6 @@ import java.nio.charset.Charset;
  */
 public abstract class Constants {
 
-    public static class Language {
-
-    }
-
     public static class CharsetConfig {
         public static Charset defaultCharset() {
             return utf8Charset();
@@ -51,5 +47,13 @@ public abstract class Constants {
         public static final IEnumProvider<Integer> NOT_FOUND = new BaseCode(40400, "数据不存在");
         public static final IEnumProvider<Integer> FAILURE = new BaseCode(50000, "系统未知异常");
         public static final IEnumProvider<Integer> TIMEOUT = new BaseCode(50400, "服务超时");
+    }
+
+    public static class Environment{
+        public static final String DEV = "dev";
+        public static final String SIT = "sit";
+        public static final String UAT = "uat";
+        public static final String BETA = "beta";
+        public static final String PRODUCTION = "production";
     }
 }

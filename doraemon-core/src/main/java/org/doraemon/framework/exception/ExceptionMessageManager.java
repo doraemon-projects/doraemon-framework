@@ -24,8 +24,6 @@ public final class ExceptionMessageManager {
 
     public static final Map<String, Properties> LANG_PROPERTIES = new ConcurrentHashMap<>();
 
-    public static final String SIMPLIFIED_CHINESE = "zh_CN";
-    public static final String US = "en_US";
     public static final String EXCEPTION_PROPERTIES_FILE_NAME = "exception";
 
     static {
