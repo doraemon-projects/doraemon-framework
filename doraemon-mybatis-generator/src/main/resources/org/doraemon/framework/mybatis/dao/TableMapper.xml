@@ -26,9 +26,9 @@
         FROM information_schema.TABLES t
         <where>
             table_schema = #{tableSchema}
-            AND t.table_name IN
+            AND LOWER(t.table_name) IN
             <foreach item="item" collection="tableNames" separator="," open="(" close=")">
-                #{item}
+                LOWER(#{item})
             </foreach>
         </where>
         ORDER BY t.table_name ASC
@@ -44,7 +44,7 @@
         t.ordinal_position
         FROM information_schema.COLUMNS t
         <where>
-            t.table_schema = #{tableSchema} AND t.table_name = #{tableName}
+            t.table_schema = #{tableSchema} AND LOWER(t.table_name) = LOWER(#{tableName})
         </where>
         ORDER BY t.table_name ASC , t.ordinal_position ASC
     </select>
