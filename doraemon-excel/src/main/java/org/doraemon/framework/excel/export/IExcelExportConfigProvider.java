@@ -14,5 +14,5 @@ public interface IExcelExportConfigProvider<T> extends IExcelDataProvider<T>{
      * @param filters 筛选条件
      * @return excel配置信息
      */
-     List<T> getConfigInfo(String excelType, Map<String, Object> filters);
+     List<T> getExcelConfigInfo(String excelType, Map<String, Object> filters);
 }
