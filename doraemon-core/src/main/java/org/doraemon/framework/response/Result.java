@@ -58,23 +58,23 @@ public class Result<T> {
         public Builder() {
         }
 
-        public Builder code(String code) {
+        public Builder<T> code(String code) {
             this.code = code;
             return this;
         }
 
-        public Builder message(String message) {
+        public Builder<T> message(String message) {
             this.message = message;
             return this;
         }
 
-        public Builder data(T data) {
+        public Builder<T> data(T data) {
             this.data = data;
             return this;
         }
 
-        public Result build() {
-            Result result = new Result();
+        public Result<T> build() {
+            Result<T> result = new Result<T>();
             result.data = this.data;
             result.code = this.code;
             result.message = this.message;
