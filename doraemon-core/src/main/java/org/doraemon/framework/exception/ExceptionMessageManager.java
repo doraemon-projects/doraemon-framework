@@ -18,6 +18,8 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public final class ExceptionMessageManager {
 
+    private ExceptionMessageManager(){}
+
     private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionMessageManager.class);
 
     public static final String ACCEPT_LANGUAGE = "Accept-Language";

@@ -20,9 +20,9 @@ import java.util.Objects;
  */
 public class DateUtils {
 
-    /**
-     *  yyyy:MM:dd HHmmssSSS; 默认localDateTime时间格式
-     */
+    private DateUtils() {
+
+    }
 
     /**
      * 格式化日期时间格式
