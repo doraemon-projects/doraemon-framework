@@ -4,6 +4,7 @@ import org.doraemon.framework.base.BaseCode;
 import org.doraemon.framework.base.IEnumProvider;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @description: 系统常量, 后续可以继承
@@ -22,7 +23,7 @@ public abstract class Constants {
         }
 
         public static Charset utf8Charset() {
-            return Charset.forName("UTF-8");
+            return StandardCharsets.UTF_8;
         }
     }
 
@@ -47,6 +48,13 @@ public abstract class Constants {
         public static final IEnumProvider<Integer> NOT_FOUND = new BaseCode(40400, "数据不存在");
         public static final IEnumProvider<Integer> FAILURE = new BaseCode(50000, "系统未知异常");
         public static final IEnumProvider<Integer> TIMEOUT = new BaseCode(50400, "服务超时");
+    }
+
+    public static class ExceptionCode{
+        public static final IEnumProvider<Integer> RECORD_EXIST = new BaseCode(3000, "记录已存在");
+        public static final IEnumProvider<Integer> RECORD_NOT_EXIST = new BaseCode(3001, "记录不存在");
+        public static final IEnumProvider<Integer> STRING_IS_BLANK = new BaseCode(3100, "字符串为空");
+        public static final IEnumProvider<Integer> RESULT_IS_FALSE = new BaseCode(3200, "结果为假");
     }
 
     /**

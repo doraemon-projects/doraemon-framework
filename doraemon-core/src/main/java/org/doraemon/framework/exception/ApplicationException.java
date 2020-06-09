@@ -8,7 +8,7 @@ import java.util.Objects;
  * Author:      fengwenping
  * Date:        2019/12/15 19:33
  */
-public class ApplicationException extends Exception {
+public class ApplicationException extends RuntimeException {
 
     private final String errorCode;
     private String message;
