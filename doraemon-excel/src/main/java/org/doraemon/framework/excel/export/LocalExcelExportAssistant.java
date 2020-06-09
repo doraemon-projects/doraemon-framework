@@ -24,12 +24,7 @@ public class LocalExcelExportAssistant implements ILocalExcelExportAssistant {
 
     @Override
     public <T> int submitExportTask(String excelType, Serializable condition, Page<T> page, Map<String, Object> parameters) throws ApplicationException {
-        IExcelDataProvider<T> excelDataProvider = new IExcelDataProvider<T>() {
-            @Override
-            public List<T> getBatchData(Serializable condition, Page<T> page) throws ApplicationException {
-                return null;
-            }
-        };
+        IExcelDataProvider<T> excelDataProvider = (filter, date) -> null;
         final List<T> data = excelDataProvider.getBatchData(condition, page);
         return 0;
     }

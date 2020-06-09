@@ -22,7 +22,7 @@ import java.util.Objects;
 public class ExceptionControllerAdvice {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Result<String> MethodArgumentNotValidException(MethodArgumentNotValidException exception) {
+    public Result<String> methodArgumentNotValidException(MethodArgumentNotValidException exception) {
         String message = null;
         final List<ObjectError> allErrors = exception.getBindingResult().getAllErrors();
         if (!CollectionUtils.isEmpty(allErrors)) {

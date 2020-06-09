@@ -17,10 +17,7 @@ import org.doraemon.framework.util.XmlUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.InputStream;
-import java.io.Writer;
+import java.io.*;
 import java.util.*;
 
 /**
@@ -36,16 +33,9 @@ public class GeneratorComponent {
     private GeneratorComponent() {
     }
 
-    private static GeneratorComponent instance = null;
+    private static GeneratorComponent instance = new GeneratorComponent();
 
     public static GeneratorComponent getInstance() {
-        if (instance == null) {
-            synchronized (GeneratorComponent.class) {
-                if (instance == null) {
-                    instance = new GeneratorComponent();
-                }
-            }
-        }
         return instance;
     }
 
@@ -101,9 +91,9 @@ public class GeneratorComponent {
                 entityModel.getFields().add(fieldModel);
             });
         });
-        this.generateFile(new StringBuffer(databaseType.getCode().toLowerCase()).append("/").append(GeneratorProperties.JAVA_MODEL_TEMPLATE_NAME).toString());
-        this.generateFile(new StringBuffer(databaseType.getCode().toLowerCase()).append("/").append(GeneratorProperties.XML_MAPPER_TEMPLATE_NAME).toString());
-        this.generateFile(new StringBuffer(databaseType.getCode().toLowerCase()).append("/").append(GeneratorProperties.JAVA_MAPPER_TEMPLATE_NAME).toString());
+        this.generateFile(databaseType.getCode().toLowerCase() + "/" + GeneratorProperties.JAVA_MODEL_TEMPLATE_NAME);
+        this.generateFile(databaseType.getCode().toLowerCase() + "/" + GeneratorProperties.XML_MAPPER_TEMPLATE_NAME);
+        this.generateFile(databaseType.getCode().toLowerCase() + "/" + GeneratorProperties.JAVA_MAPPER_TEMPLATE_NAME);
     }
 
     private void generateFile(String templateName) {
@@ -138,23 +128,22 @@ public class GeneratorComponent {
         return outputDirectory.replace("\\", "/");
     }
 
-    public void createFile(String outputDirectory, String fileName, String content) throws Exception {
+    public void createFile(String outputDirectory, String fileName, String content) throws IOException {
         if (fileName == null || fileName.equals("")) {
             throw new IllegalArgumentException("fileName must be not null");
         }
         fileName = outputDirectory + "/" + fileName;
         File file = new File(fileName);
         if (!(file.getParentFile().exists())) {
-            file.getParentFile().mkdirs();
+            boolean flag = file.getParentFile().mkdirs();
+
         }
         if (file.exists()) {
-            file.delete();
+            boolean flag = file.delete();
         }
         Writer writer = new FileWriter(file, true);
         writer.write(content);
-        if (writer != null) {
-            writer.close();
-        }
+        writer.close();
     }
 
     public void execute() {
