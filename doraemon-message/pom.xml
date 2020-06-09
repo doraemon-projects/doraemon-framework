@@ -9,7 +9,6 @@
         <relativePath>../doraemon-framework-bom/pom.xml</relativePath>
     </parent>
 
-    <groupId>org.doraemon.framework</groupId>
     <artifactId>doraemon-message</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 

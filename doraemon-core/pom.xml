@@ -9,7 +9,6 @@
         <relativePath>../doraemon-framework-bom/pom.xml</relativePath>
     </parent>
 
-    <groupId>org.doraemon.framework</groupId>
     <artifactId>doraemon-core</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
@@ -64,6 +63,10 @@
             <groupId>jakarta.xml.bind</groupId>
             <artifactId>jakarta.xml.bind-api</artifactId>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.pagehelper</groupId>
+            <artifactId>pagehelper</artifactId>
         </dependency>
     </dependencies>
 
