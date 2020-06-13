@@ -1,5 +1,7 @@
 package org.doraemon.framework.mybatis.enums;
 
+import org.doraemon.framework.base.IEnumProvider;
+
 import java.util.Arrays;
 
 /**
@@ -8,7 +10,7 @@ import java.util.Arrays;
  * author:      fengwenping
  * date:        2019/7/14 21:40
  */
-public enum DatabaseType implements EnumProvider {
+public enum DatabaseType implements IEnumProvider {
     ORACLE("Oracle", "Oracle"),
 
     MYSQL("MySQL", "MySQL"),
@@ -37,7 +39,7 @@ public enum DatabaseType implements EnumProvider {
     }
 
     @Override
-    public String getDesc() {
+    public String getName() {
         return this.desc;
     }
 }

@@ -1,5 +1,7 @@
 package org.doraemon.framework.mybatis.enums;
 
+import org.doraemon.framework.base.IEnumProvider;
+
 import java.util.Arrays;
 
 /**
@@ -8,7 +10,7 @@ import java.util.Arrays;
  * author:      fengwenping
  * date:        2019/7/1 0:15
  */
-public enum OracleDataType implements EnumProvider {
+public enum OracleDataType implements IEnumProvider {
 
     VARCHAR2("VARCHAR2", "java.lang.String"),
     CHAR("CHAR", "java.lang.String"),
@@ -33,7 +35,8 @@ public enum OracleDataType implements EnumProvider {
     }
 
     @Override
-    public String getDesc() {
+    public String getName() {
         return this.javaType;
     }
+
 }

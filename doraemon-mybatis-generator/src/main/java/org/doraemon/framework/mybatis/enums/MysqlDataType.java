@@ -1,5 +1,7 @@
 package org.doraemon.framework.mybatis.enums;
 
+import org.doraemon.framework.base.IEnumProvider;
+
 import java.util.Arrays;
 
 /**
@@ -8,7 +10,7 @@ import java.util.Arrays;
  * author:      fengwenping
  * date:        2019/6/30 23:55
  */
-public enum MysqlDataType implements EnumProvider {
+public enum MysqlDataType implements IEnumProvider {
     BIT("BIT", "java.lang.Boolean"),
     VARCHAR("VARCHAR", "java.lang.String"),
     CHAR("CHAR", "java.lang.String"),
@@ -49,7 +51,9 @@ public enum MysqlDataType implements EnumProvider {
     }
 
     @Override
-    public String getDesc() {
+    public String getName() {
         return this.javaType;
     }
+
+
 }
