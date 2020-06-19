@@ -58,6 +58,7 @@
         <junit.version>4.12</junit.version>
         <cxf.version>3.3.6</cxf.version>
         <aspectj.version>1.8.13</aspectj.version>
+        <poi.version>4.0.0</poi.version>
     </properties>
 
     <dependencyManagement>
@@ -198,7 +199,21 @@
                 <artifactId>pagehelper</artifactId>
                 <version>5.1.11</version>
             </dependency>
+            <!--xls格式(2003-)-->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+
+            <!--xlsx(excle2007+)-->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
         </dependencies>
+
     </dependencyManagement>
 
     <build>
