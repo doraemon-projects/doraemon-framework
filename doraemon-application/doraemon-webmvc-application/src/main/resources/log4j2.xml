@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="500">
+    <Properties>
+        <Property name="LOG_HOME">/Users/fengwenping/Workspace/IdeaProjects/applogs/ssm-demo</Property>
+    </Properties>
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [traceId: %X{traceId}] [%-5level] [%t] %c{1} -%msg%n"/>
+        </Console>
+        <RollingFile name="appInfoFile" fileName="${LOG_HOME}/app-info.log" filePattern="${LOG_HOME}/app-info-%d{yyyyMMddHH}-%i.log.gz" ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Filters>
+                <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100">
+                <Delete basePath="${LOG_HOME}" maxDepth="2">
+                    <IfFileName glob="*/app-info-*.log.gz">
+                        <IfLastModified age="30d">
+                            <IfAny>
+                                <IfAccumulatedFileSize exceeds="100 GB"/>
+                                <IfAccumulatedFileCount exceeds="10"/>
+                            </IfAny>
+                        </IfLastModified>
+                    </IfFileName>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+        <RollingFile name="appErrorFile" fileName="${LOG_HOME}/app-error.log" filePattern="${LOG_HOME}/app-error-%d{yyyyMMddHH}-%i.log.gz" ignoreExceptions="false">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+            <Filters>
+                <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="100 MB"/>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100">
+                <Delete basePath="${LOG_HOME}" maxDepth="2">
+                    <IfFileName glob="*/app-error-*.log.gz">
+                        <IfLastModified age="30d">
+                            <IfAny>
+                                <IfAccumulatedFileSize exceeds="100 GB"/>
+                                <IfAccumulatedFileCount exceeds="10"/>
+                            </IfAny>
+                        </IfLastModified>
+                    </IfFileName>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <!--log4jdbc start-->
+        <Logger name="jdbc.sqlonly" level="error"></Logger>
+        <Logger name="jdbc.audit" level="error"></Logger>
+        <Logger name="jdbc.resultset" level="error"></Logger>
+        <Logger name="jdbc.resultsettable" level="error"></Logger>
+        <Logger name="jdbc.connection" level="error"></Logger>
+        <Logger name="jdbc.sqltiming" level="info"></Logger>
+        <!--log4jdbc end-->
+        <Logger name="org.jfteam" level="INFO" additivity="false">
+            <AppenderRef ref="appInfoFile"/>
+            <AppenderRef ref="appErrorFile"/>
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="org.jfteam.framework.web" level="DEBUG" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Root level="INFO">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--注入exception的描述信息-->
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basenames" value="classpath:properties.exception"/>
+        <!--指定文件的编码-->
+        <property name="fileEncodings" value="UTF-8"/>
+        <!--对资源文件的缓存时间-->
+        <property name="cacheSeconds" value="120"/>
+    </bean>
+
+    <beans profile="dev">
+        <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+            <property name="fileEncoding" value="UTF-8"/>
+            <property name="ignoreUnresolvablePlaceholders" value="true"/>
+            <property name="locations">
+                <util:list>
+                    <value>classpath:properties/application.properties</value>
+                    <value>classpath:properties/application-dev.properties</value>
+                </util:list>
+            </property>
+        </bean>
+    </beans>
+    <beans profile="sit">
+        <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+            <property name="fileEncoding" value="UTF-8"/>
+            <property name="ignoreUnresolvablePlaceholders" value="true"/>
+            <property name="locations">
+                <util:list>
+                    <value>classpath:properties/application.properties</value>
+                    <value>classpath:properties/application-sit.properties</value>
+                </util:list>
+            </property>
+        </bean>
+    </beans>
+    <beans profile="uat">
+        <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+            <property name="fileEncoding" value="UTF-8"/>
+            <property name="ignoreUnresolvablePlaceholders" value="true"/>
+            <property name="locations">
+                <util:list>
+                    <value>classpath:properties/application.properties</value>
+                    <value>classpath:properties/application-uat.properties</value>
+                </util:list>
+            </property>
+        </bean>
+    </beans>
+    <beans profile="production">
+        <bean class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+            <property name="fileEncoding" value="UTF-8"/>
+            <property name="ignoreUnresolvablePlaceholders" value="true"/>
+            <property name="locations">
+                <util:list>
+                    <value>classpath:properties/application.properties</value>
+                    <value>classpath:properties/application-production.properties</value>
+                </util:list>
+            </property>
+        </bean>
+    </beans>
+</beans>
+
+
