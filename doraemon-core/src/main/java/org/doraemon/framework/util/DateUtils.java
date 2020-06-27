@@ -18,7 +18,7 @@ import java.util.Objects;
  * @author: yuanDong.lin
  * Date:     2019/12/17 22:22
  */
-public class DateUtils {
+public abstract class DateUtils {
 
     private DateUtils() {
 

@@ -15,7 +15,7 @@ import java.nio.charset.Charset;
  * author:      fengwenping
  * date:        2019/7/14 21:58
  */
-public final class IOUtils {
+public abstract class IOUtils {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(IOUtils.class);
 

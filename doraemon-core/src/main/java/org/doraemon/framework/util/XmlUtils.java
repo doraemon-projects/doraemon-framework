@@ -28,7 +28,7 @@ import java.util.List;
  * author:      fengwenping
  * date:        2019/6/30 22:47
  */
-public final class XmlUtils {
+public abstract class XmlUtils {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(XmlUtils.class);
 
