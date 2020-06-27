@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:cxf="http://cxf.apache.org/core"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <import resource="classpath:META-INF/cxf/cxf.xml"/>
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml"/>
+
+    <bean id="unifiedJacksonJsonProvider" class="com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider"/>
+    <bean id="unifiedExceptionMapperProvider" class="org.doraemon.framework.jaxrs.UnifiedExceptionMapperProvider"/>
+    <bean id="unifiedMessageBodyWriterProvider" class="org.doraemon.framework.jaxrs.UnifiedMessageBodyWriterProvider"/>
+
+    <import resource="classpath*:/rest/*-services.xml"/>
+</beans>

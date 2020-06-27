@@ -1,6 +1,6 @@
 package org.doraemon.framework.lookup.service.impl;
 
-import org.doraemon.framework.base.dao.BaseMapper;
+import org.doraemon.framework.base.dao.BaseDao;
 import org.doraemon.framework.base.service.impl.BaseServiceImpl;
 import org.doraemon.framework.lookup.bean.LookupItem;
 import org.doraemon.framework.lookup.dao.LookupItemDao;
@@ -15,13 +15,13 @@ import javax.inject.Named;
  * @date: 2020-04-12 18:12
  */
 @Named(value = "lookupItemQueryServiceImpl")
-public class LookupItemQueryServiceImpl extends BaseServiceImpl<LookupItem, Integer> implements LookupItemQueryService {
+public class LookupItemQueryServiceImpl extends BaseServiceImpl<LookupItem, String> implements LookupItemQueryService {
 
     @Inject
     private LookupItemDao lookupItemDao;
 
     @Override
-    public BaseMapper<LookupItem, Integer> getDao() {
+    public BaseDao<LookupItem, String> getDao() {
         return this.lookupItemDao;
     }
 }

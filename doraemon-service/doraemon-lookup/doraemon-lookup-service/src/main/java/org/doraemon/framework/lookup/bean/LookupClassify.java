@@ -1,6 +1,5 @@
 package org.doraemon.framework.lookup.bean;
 
-import lombok.Data;
 import org.doraemon.framework.base.BaseObject;
 
 /**

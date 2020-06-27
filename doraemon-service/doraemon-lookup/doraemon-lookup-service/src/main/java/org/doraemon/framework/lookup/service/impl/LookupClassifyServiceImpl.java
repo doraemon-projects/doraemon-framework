@@ -3,6 +3,8 @@ package org.doraemon.framework.lookup.service.impl;
 import org.doraemon.framework.exception.ApplicationException;
 import org.doraemon.framework.lookup.bean.LookupClassify;
 import org.doraemon.framework.lookup.service.LookupClassifyService;
+import org.doraemon.framework.lookup.vo.LookupClassifyVO;
+import org.doraemon.framework.util.BeanUtils;
 
 import javax.inject.Named;
 
@@ -13,8 +15,11 @@ import javax.inject.Named;
  */
 @Named(value = "lookupClassifyServiceImpl")
 public class LookupClassifyServiceImpl extends LookupClassifyQueryServiceImpl implements LookupClassifyService {
+
     @Override
-    public LookupClassify create(LookupClassify lookupClassify) throws ApplicationException {
-        return super.insert(lookupClassify);
+    public LookupClassifyVO create(LookupClassifyVO lookupClassifyVO) throws ApplicationException {
+        final LookupClassify lookupClassify = BeanUtils.copyProperties(lookupClassifyVO, LookupClassify.class);
+        super.insert(lookupClassify);
+        return lookupClassifyVO;
     }
 }

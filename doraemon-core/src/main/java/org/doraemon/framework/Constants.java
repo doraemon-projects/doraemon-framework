@@ -32,7 +32,7 @@ public abstract class Constants {
     public static class ContentType {
         public static final String ALL_VALUE = "*/*";
         public static final String APPLICATION_JSON_UTF_8 = "application/json; charset=UTF-8";
-        public static final String APPLICATION_XML = "application/xml";
+        public static final String APPLICATION_XML_UTF_8 = "application/xml; charset=UTF-8";
         public static final String TEXT_HTML = "text/html";
         public static final String TEXT_PLAIN = "text/plain";
 
