@@ -1,5 +1,9 @@
 package org.doraemon.framework.exception;
 
+import org.doraemon.framework.base.BaseCode;
+import org.doraemon.framework.base.IEnumProvider;
+import org.doraemon.framework.util.StringUtils;
+
 /**
  * @Package : com.jfteam.exception
  * @Description :
@@ -10,8 +14,16 @@ public class ExceptionCode implements IExceptionCodeProvider {
 
     private String errorCode;
 
-    ExceptionCode(String errorCode) {
+    private String errorMessage;
+
+    public ExceptionCode(String errorCode) {
         this.errorCode = errorCode;
+        this.errorMessage = null;
+    }
+
+    public ExceptionCode(IEnumProvider<Integer> enumProvider) {
+        this.errorCode = enumProvider.getCode().toString();
+        this.errorMessage = enumProvider.getName();
     }
 
     @Override
@@ -21,6 +33,9 @@ public class ExceptionCode implements IExceptionCodeProvider {
 
     @Override
     public String getMessage() {
-        return ExceptionMessageManager.getMessage(this.errorCode);
+        if (StringUtils.isBlank(this.errorMessage)) {
+            return ExceptionMessageManager.getMessage(this.errorCode);
+        }
+        return this.errorMessage;
     }
 }

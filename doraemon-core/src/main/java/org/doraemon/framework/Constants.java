@@ -2,6 +2,8 @@ package org.doraemon.framework;
 
 import org.doraemon.framework.base.BaseCode;
 import org.doraemon.framework.base.IEnumProvider;
+import org.doraemon.framework.exception.ExceptionCode;
+import org.doraemon.framework.exception.IExceptionCodeProvider;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -48,13 +50,19 @@ public abstract class Constants {
         public static final IEnumProvider<Integer> NOT_FOUND = new BaseCode(40400, "数据不存在");
         public static final IEnumProvider<Integer> FAILURE = new BaseCode(50000, "系统未知异常");
         public static final IEnumProvider<Integer> TIMEOUT = new BaseCode(50400, "服务超时");
-    }
+        //业务自定义编码
+        public static final IEnumProvider<Integer> RECORD_EXIST = new BaseCode(20100, "记录已存在");
+        public static final IEnumProvider<Integer> RECORD_NOT_EXIST = new BaseCode(20101, "记录不存在");
+        public static final IEnumProvider<Integer> RECORD_INVALID = new BaseCode(20102, "记录不存在或失效");
+        public static final IEnumProvider<Integer> STRING_IS_BLANK = new BaseCode(20103, "字符串为空");
+        public static final IEnumProvider<Integer> RESULT_IS_FALSE = new BaseCode(20104, "结果为假");
 
-    public static class ExceptionCode{
-        public static final IEnumProvider<Integer> RECORD_EXIST = new BaseCode(3000, "记录已存在");
-        public static final IEnumProvider<Integer> RECORD_NOT_EXIST = new BaseCode(3001, "记录不存在");
-        public static final IEnumProvider<Integer> STRING_IS_BLANK = new BaseCode(3100, "字符串为空");
-        public static final IEnumProvider<Integer> RESULT_IS_FALSE = new BaseCode(3200, "结果为假");
+        //自定义异常编码
+        public static final IExceptionCodeProvider EXP_RECORD_EXIST = new ExceptionCode(RECORD_EXIST);
+        public static final IExceptionCodeProvider EXP_RECORD_NOT_EXIST = new ExceptionCode(RECORD_NOT_EXIST);
+        public static final IExceptionCodeProvider EXP_RECORD_INVALID = new ExceptionCode(RECORD_INVALID);
+        public static final IExceptionCodeProvider EXP_STRING_IS_BLANK = new ExceptionCode(STRING_IS_BLANK);
+        public static final IExceptionCodeProvider EXP_RESULT_IS_FALSE = new ExceptionCode(RESULT_IS_FALSE);
     }
 
     /**
