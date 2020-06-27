@@ -20,9 +20,9 @@ public final class SqlHelper {
         LOGGER.debug("databaseType: {}, jdbcType: {}", databaseType.getCode(), jdbcType);
         switch (databaseType) {
             case ORACLE:
-                return OracleDataType.fromString(jdbcType).getDesc();
+                return OracleDataType.fromString(jdbcType).getName();
             default:
-                return MysqlDataType.fromString(jdbcType).getDesc();
+                return MysqlDataType.fromString(jdbcType).getName();
         }
     }
 

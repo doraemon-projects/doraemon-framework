@@ -38,10 +38,7 @@
     <modules>
         <module>../doraemon-base</module>
         <module>../doraemon-core</module>
-        <module>../doraemon-excel</module>
-        <module>../doraemon-message</module>
         <module>../doraemon-mybatis-generator</module>
-<!--        <module>../doraemon-rocketmq</module>-->
         <module>../doraemon-webmvc</module>
         <module>../doraemon-jaxrs-extension</module>
     </modules>
