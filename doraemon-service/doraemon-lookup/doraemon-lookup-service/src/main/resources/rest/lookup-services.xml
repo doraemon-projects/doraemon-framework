@@ -5,13 +5,14 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
 
-    <jaxrs:server id="lookup-container" address="/">
+    <jaxrs:server id="lookup-container" address="/lookup">
         <jaxrs:serviceBeans>
             <ref bean="lookupClassifyServiceImpl"/>
             <ref bean="lookupItemServiceImpl"/>
         </jaxrs:serviceBeans>
         <jaxrs:providers>
             <ref bean="unifiedJacksonJsonProvider"/>
+            <ref bean="unifiedJacksonJaxbJsonProvider"/>
             <ref bean="unifiedExceptionMapperProvider"/>
             <ref bean="unifiedMessageBodyWriterProvider"/>
         </jaxrs:providers>
