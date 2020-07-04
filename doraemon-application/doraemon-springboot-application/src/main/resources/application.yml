@@ -1,0 +1,23 @@
+#应用环境的支持
+spring:
+  profiles:
+    active: dev
+
+#应用端口和上下文配置
+server:
+  port: 8080
+  servlet:
+    context-path: /doraemon-application
+
+#cxf配置
+
+#mybatis配置
+mybatis:
+  # 对应实体类的包名
+  type-aliases-package: org.doraemon.**.bean
+  # mapper.xml文件
+  mapper-locations: classpath*:mapper/org/doraemon/**/*Dao.xml
+
+#cxf配置
+cxf:
+  path: /services
