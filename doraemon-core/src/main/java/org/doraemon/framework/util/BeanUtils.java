@@ -1,5 +1,6 @@
 package org.doraemon.framework.util;
 
+import com.esotericsoftware.reflectasm.ConstructorAccess;
 import net.sf.cglib.beans.BeanCopier;
 
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ public abstract class BeanUtils {
     }
 
     private static final Map<String, BeanCopier> BEAN_COPIER_CACHE = new ConcurrentHashMap<>();
+
+    private static final Map<String, ConstructorAccess> CONSTRUCTOR_ACCESS_CACHE = new ConcurrentHashMap<>();
 
     public static void copyProperties(Object source, Object target) {
         BeanCopier copier = getBeanCopier(source.getClass(), target.getClass());
@@ -63,16 +66,33 @@ public abstract class BeanUtils {
         if (sourceList == null || sourceList.isEmpty()) {
             return Collections.emptyList();
         }
+        ConstructorAccess<T> constructorAccess = getConstructorAccess(targetClass);
         List<T> resultList = new ArrayList<>(sourceList.size());
         for (Object o : sourceList) {
-            T t = null;
+            T t;
             try {
-                t = copyProperties(o, targetClass);
+                t = constructorAccess.newInstance();
+                copyProperties(o, t);
                 resultList.add(t);
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
         return resultList;
+    }
+
+    private static <T> ConstructorAccess<T> getConstructorAccess(Class<T> targetClass) {
+        ConstructorAccess<T> constructorAccess = CONSTRUCTOR_ACCESS_CACHE.get(targetClass.getName());
+        if (constructorAccess != null) {
+            return constructorAccess;
+        }
+        try {
+            constructorAccess = ConstructorAccess.get(targetClass);
+            constructorAccess.newInstance();
+            CONSTRUCTOR_ACCESS_CACHE.put(targetClass.toString(), constructorAccess);
+        } catch (Exception e) {
+            throw new RuntimeException(String.format("Create new instance of %s failed: %s", targetClass, e.getMessage()));
+        }
+        return constructorAccess;
     }
 }

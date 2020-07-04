@@ -3,7 +3,7 @@
     <Properties>
         <Property name="dbType" value="MySQL"/>
         <Property name="schema" value="test"/>
-        <Property name="package" value="org.doraemon.framework.lookup"/>
+        <Property name="package" value="org.doraemon.framework.registry"/>
         <Property name="modelSuffix" value="VO"/>
         <Property name="outDirectory" value="/"/>
     </Properties>

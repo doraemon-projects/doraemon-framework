@@ -61,6 +61,12 @@
                 <artifactId>doraemon-lookup-api</artifactId>
                 <version>${doraemon-framework.version}</version>
             </dependency>
+            <!--api自身依赖-->
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-registry-api</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

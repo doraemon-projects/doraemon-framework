@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.doraemon.framework</groupId>
-        <artifactId>doraemon-framework-bom</artifactId>
+        <artifactId>doraemon-service</artifactId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath>../doraemon-framework-bom/pom.xml</relativePath>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>doraemon-jaxrs-extension</artifactId>
+    <groupId>org.doraemon.framework</groupId>
+    <artifactId>doraemon-registry-api</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-    <name>Doraemon JAX-RS Extension</name>
-    <description>Doraemon JAX-RS Extension</description>
+    <name>Doraemon Registry Api</name>
+    <description>Doraemon Registry Api</description>
     <url>https://github.com/doraemon-projects/doraemon-framework</url>
     <organization>
         <name>jfteam</name>
@@ -45,24 +48,10 @@
         <dependency>
             <groupId>org.doraemon.framework</groupId>
             <artifactId>doraemon-core</artifactId>
-            <version>${doraemon-framework.version}</version>
         </dependency>
         <dependency>
             <groupId>jakarta.ws.rs</groupId>
             <artifactId>jakarta.ws.rs-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>jakarta.inject</groupId>
-            <artifactId>jakarta.inject-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.jaxrs</groupId>
-            <artifactId>jackson-jaxrs-json-provider</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.jaxrs</groupId>
-            <artifactId>jackson-jaxrs-xml-provider</artifactId>
-        </dependency>
     </dependencies>
-
 </project>
