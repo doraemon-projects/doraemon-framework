@@ -3,6 +3,7 @@ package org.doraemon.framework.jaxrs;
 import org.doraemon.framework.Constants;
 import org.doraemon.framework.response.Result;
 import org.doraemon.framework.util.JSON;
+import org.doraemon.framework.util.XmlUtils;
 
 import javax.inject.Named;
 import javax.ws.rs.Consumes;
@@ -25,8 +26,8 @@ import java.util.Objects;
  */
 @Named("unifiedMessageBodyWriterProvider")
 @Provider
-@Produces(Constants.ContentType.APPLICATION_JSON_UTF_8)
-@Consumes(Constants.ContentType.APPLICATION_JSON_UTF_8)
+@Produces({Constants.ContentType.APPLICATION_JSON_UTF_8, Constants.ContentType.APPLICATION_XML_UTF_8})
+@Consumes({Constants.ContentType.APPLICATION_JSON_UTF_8, Constants.ContentType.APPLICATION_XML_UTF_8})
 public class UnifiedMessageBodyWriterProvider implements MessageBodyWriter<Object> {
     @Override
     public boolean isWriteable(Class<?> aClass, Type type, Annotation[] annotations, MediaType mediaType) {
@@ -35,6 +36,10 @@ public class UnifiedMessageBodyWriterProvider implements MessageBodyWriter<Objec
 
     @Override
     public void writeTo(Object o, Class<?> aClass, Type type, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> multivaluedMap, OutputStream outputStream) throws IOException, WebApplicationException {
-        outputStream.write(JSON.toJSONString(Result.success(o)).getBytes(Constants.CharsetConfig.utf8Charset()));
+        String body = JSON.toJSONString(Result.success(o));
+        if (Objects.equals(MediaType.APPLICATION_XML_TYPE.getSubtype(), mediaType.getSubtype())) {
+            body = XmlUtils.convertObject2Xml(Result.success(o));
+        }
+        outputStream.write(body.getBytes(Constants.CharsetConfig.utf8Charset()));
     }
 }

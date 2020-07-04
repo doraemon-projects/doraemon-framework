@@ -3,7 +3,6 @@ package org.doraemon.framework.jaxrs;
 import org.doraemon.framework.Constants;
 import org.doraemon.framework.exception.ApplicationException;
 import org.doraemon.framework.exception.ApplicationRuntimeException;
-import org.doraemon.framework.exception.BusinessException;
 import org.doraemon.framework.response.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -54,17 +53,21 @@ public class UnifiedExceptionMapperProvider implements ExceptionMapper<Exception
                     .message(this.getErrorMessage(e))
                     .build();
         }
-        Response.ResponseBuilder builder = Response.status(Response.Status.OK);
-        builder.type(Constants.ContentType.APPLICATION_JSON_UTF_8);
+        Response.ResponseBuilder builder = Response.status(this.getShowMessage() ? Response.Status.INTERNAL_SERVER_ERROR : Response.Status.OK);
         builder.entity(result);
         builder.language(Locale.SIMPLIFIED_CHINESE);
         return builder.build();
     }
 
+    private boolean getShowMessage() {
+        return Objects.equals(
+                Boolean.TRUE.toString(),
+                System.getProperty("doraemon.show.exception.message", Boolean.FALSE.toString())
+        );
+    }
+
     private String getErrorMessage(Exception exception) {
-        boolean showMessage = Objects.equals(Boolean.TRUE.toString(),
-                System.getProperty("doraemon.show.exception.message", Boolean.FALSE.toString()));
-        if (showMessage) {
+        if (this.getShowMessage()) {
             return this.getStackTraceMessage(exception);
         }
         return Constants.ResultCode.EXP_FAILURE.getMessage();
