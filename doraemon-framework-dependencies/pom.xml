@@ -77,6 +77,11 @@
             </dependency>
             <dependency>
                 <groupId>org.springframework</groupId>
+                <artifactId>spring-tx</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
                 <artifactId>spring-context</artifactId>
                 <version>${spring.version}</version>
             </dependency>
@@ -91,9 +96,54 @@
                 <version>${spring.version}</version>
             </dependency>
             <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-xml</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <dependency>
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-frontend-jaxrs</artifactId>
-                <version>3.3.6</version>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-rs-service-description-swagger</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-features-logging</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.webjars</groupId>
+                <artifactId>swagger-ui</artifactId>
+                <version>3.28.0</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.jaxrs</groupId>
+                <artifactId>jackson-jaxrs-json-provider</artifactId>
+                <version>2.10.3</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.jaxrs</groupId>
+                <artifactId>jackson-jaxrs-xml-provider</artifactId>
+                <version>2.10.3</version>
             </dependency>
             <dependency>
                 <groupId>jakarta.inject</groupId>
@@ -120,6 +170,11 @@
                 <artifactId>jaxb-api</artifactId>
                 <version>2.3.1</version>
             </dependency>
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>2.3.3</version>
+            </dependency>
 
             <dependency>
                 <groupId>javax.xml.soap</groupId>
@@ -136,6 +191,7 @@
                 <artifactId>stax-ex</artifactId>
                 <version>1.8.1</version>
             </dependency>
+            <!--aspectjweaver中包含aspectjrt-->
             <dependency>
                 <groupId>org.aspectj</groupId>
                 <artifactId>aspectjweaver</artifactId>
@@ -153,7 +209,17 @@
             </dependency>
             <dependency>
                 <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-api</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
                 <artifactId>log4j-slf4j-impl</artifactId>
+                <version>${log4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.logging.log4j</groupId>
+                <artifactId>log4j-to-slf4j</artifactId>
                 <version>${log4j.version}</version>
             </dependency>
             <dependency>
@@ -172,9 +238,19 @@
                 <version>2.0.4</version>
             </dependency>
             <dependency>
+                <groupId>org.freemarker</groupId>
+                <artifactId>freemarker</artifactId>
+                <version>2.3.30</version>
+            </dependency>
+            <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>8.0.20</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>5.1.11</version>
             </dependency>
             <dependency>
                 <groupId>javax.servlet</groupId>
@@ -185,6 +261,18 @@
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <version>${junit.version}</version>
+            </dependency>
+
+            <!--SpringBoot Starter Version-->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>2.1.3</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-spring-boot-starter-jaxrs</artifactId>
+                <version>3.3.6</version>
             </dependency>
 
             <!--doraemon-framework-->
@@ -208,16 +296,6 @@
                 <artifactId>doraemon-webmvc</artifactId>
                 <version>${doraemon-framework.version}</version>
             </dependency>
-            <!--            <dependency>-->
-            <!--                <groupId>org.doraemon.framework</groupId>-->
-            <!--                <artifactId>doraemon-message</artifactId>-->
-            <!--                <version>${doraemon-framework.version}</version>-->
-            <!--            </dependency>-->
-            <!--            <dependency>-->
-            <!--                <groupId>org.doraemon.framework</groupId>-->
-            <!--                <artifactId>doraemon-rocketmq</artifactId>-->
-            <!--                <version>${doraemon-framework.version}</version>-->
-            <!--            </dependency>-->
             <dependency>
                 <groupId>org.doraemon.framework</groupId>
                 <artifactId>doraemon-lookup-api</artifactId>
@@ -226,6 +304,16 @@
             <dependency>
                 <groupId>org.doraemon.framework</groupId>
                 <artifactId>doraemon-lookup-service</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-registry-api</artifactId>
+                <version>${doraemon-framework.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.doraemon.framework</groupId>
+                <artifactId>doraemon-registry-service</artifactId>
                 <version>${doraemon-framework.version}</version>
             </dependency>
         </dependencies>
