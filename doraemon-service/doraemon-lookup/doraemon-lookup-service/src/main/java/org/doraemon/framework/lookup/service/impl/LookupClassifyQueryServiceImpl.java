@@ -11,6 +11,7 @@ import org.doraemon.framework.lookup.dao.LookupClassifyDao;
 import org.doraemon.framework.lookup.dao.LookupItemDao;
 import org.doraemon.framework.lookup.service.LookupClassifyQueryService;
 import org.doraemon.framework.lookup.vo.LookupClassifyVO;
+import org.doraemon.framework.util.BeanUtils;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -38,7 +39,7 @@ public class LookupClassifyQueryServiceImpl extends BaseServiceImpl<LookupClassi
 
     @Override
     public LookupClassifyVO findById(String id) throws ApplicationException {
-        return this.findById(id);
+        return BeanUtils.copyProperties(this.findOneById(id), LookupClassifyVO.class);
     }
 
     @Override

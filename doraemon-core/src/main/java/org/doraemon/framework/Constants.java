@@ -43,7 +43,7 @@ public abstract class Constants {
         public static final IEnumProvider<Integer> CHECK_ERROR = new BaseCode(20004, "参数验证失败");
         public static final IEnumProvider<Integer> LOGIN_SUCCESS = new BaseCode(20007, "用户已登录");
         public static final IEnumProvider<Integer> CUSTOM_ERROR = new BaseCode(20008, "用户自定义错误");
-        public static final IEnumProvider<Integer> EXCEPTION = new BaseCode(40000, "系统异常");
+        public static final IEnumProvider<Integer> EXCEPTION = new BaseCode(40000, "系统内部异常");
         public static final IEnumProvider<Integer> NOT_LOGIN = new BaseCode(40100, "用户未登录");
         public static final IEnumProvider<Integer> AUTH_CHECK_ERROR = new BaseCode(40300, "权限认证失败");
         public static final IEnumProvider<Integer> TOKEN_EXPIRED = new BaseCode(40301, "权限过期");
@@ -56,13 +56,17 @@ public abstract class Constants {
         public static final IEnumProvider<Integer> RECORD_INVALID = new BaseCode(20102, "记录不存在或失效");
         public static final IEnumProvider<Integer> STRING_IS_BLANK = new BaseCode(20103, "字符串为空");
         public static final IEnumProvider<Integer> RESULT_IS_FALSE = new BaseCode(20104, "结果为假");
+        public static final IEnumProvider<Integer> RESULT_MODIFY_FAILURE = new BaseCode(20105, "更新记录失败");
 
         //自定义异常编码
+        public static final IExceptionCodeProvider EXP_FAILURE = new ExceptionCode(FAILURE);
+        public static final IExceptionCodeProvider EXP_CUSTOM_ERROR = new ExceptionCode(CUSTOM_ERROR);
         public static final IExceptionCodeProvider EXP_RECORD_EXIST = new ExceptionCode(RECORD_EXIST);
         public static final IExceptionCodeProvider EXP_RECORD_NOT_EXIST = new ExceptionCode(RECORD_NOT_EXIST);
         public static final IExceptionCodeProvider EXP_RECORD_INVALID = new ExceptionCode(RECORD_INVALID);
         public static final IExceptionCodeProvider EXP_STRING_IS_BLANK = new ExceptionCode(STRING_IS_BLANK);
         public static final IExceptionCodeProvider EXP_RESULT_IS_FALSE = new ExceptionCode(RESULT_IS_FALSE);
+        public static final IExceptionCodeProvider EXP_RESULT_MODIFY_FAILURE = new ExceptionCode(RESULT_IS_FALSE);
     }
 
     /**

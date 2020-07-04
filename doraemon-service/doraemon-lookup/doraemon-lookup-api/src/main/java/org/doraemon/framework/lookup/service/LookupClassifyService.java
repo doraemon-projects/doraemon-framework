@@ -14,7 +14,7 @@ import javax.ws.rs.Produces;
  * @author: fengwenping
  * @date: 2020-04-12 16:17
  */
-@Path("/lookup/classify")
+@Path("/classifies/query")
 @Produces({Constants.ContentType.APPLICATION_JSON_UTF_8, Constants.ContentType.APPLICATION_XML_UTF_8})
 @Consumes({Constants.ContentType.APPLICATION_JSON_UTF_8, Constants.ContentType.APPLICATION_XML_UTF_8})
 public interface LookupClassifyService extends LookupClassifyQueryService {

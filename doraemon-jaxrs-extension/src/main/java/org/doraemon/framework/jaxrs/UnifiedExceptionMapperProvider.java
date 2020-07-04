@@ -3,6 +3,7 @@ package org.doraemon.framework.jaxrs;
 import org.doraemon.framework.Constants;
 import org.doraemon.framework.exception.ApplicationException;
 import org.doraemon.framework.exception.ApplicationRuntimeException;
+import org.doraemon.framework.exception.BusinessException;
 import org.doraemon.framework.response.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,8 +50,8 @@ public class UnifiedExceptionMapperProvider implements ExceptionMapper<Exception
                     .build();
         } else {
             result = new Result.Builder<String>()
-                    .code(Objects.toString(Constants.ResultCode.EXCEPTION.getCode()))
-                    .message(this.getStackTraceMessage(e))
+                    .code(Constants.ResultCode.EXP_FAILURE.getErrorCode())
+                    .message(this.getErrorMessage(e))
                     .build();
         }
         Response.ResponseBuilder builder = Response.status(Response.Status.OK);
@@ -59,6 +60,16 @@ public class UnifiedExceptionMapperProvider implements ExceptionMapper<Exception
         builder.language(Locale.SIMPLIFIED_CHINESE);
         return builder.build();
     }
+
+    private String getErrorMessage(Exception exception) {
+        boolean showMessage = Objects.equals(Boolean.TRUE.toString(),
+                System.getProperty("doraemon.show.exception.message", Boolean.FALSE.toString()));
+        if (showMessage) {
+            return this.getStackTraceMessage(exception);
+        }
+        return Constants.ResultCode.EXP_FAILURE.getMessage();
+    }
+
 
     private String getStackTraceMessage(Exception exception) {
         StringWriter stringWriter = new StringWriter();

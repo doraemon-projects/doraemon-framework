@@ -1,6 +1,5 @@
 package org.doraemon.framework.exception;
 
-import org.doraemon.framework.base.BaseCode;
 import org.doraemon.framework.base.IEnumProvider;
 import org.doraemon.framework.util.StringUtils;
 
