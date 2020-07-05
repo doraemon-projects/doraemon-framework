@@ -134,7 +134,7 @@ public abstract class DateUtils extends org.apache.commons.lang3.time.DateUtils 
      * @return
      */
     public static Date parseLocalDateTime2Date(String date, String pattern) {
-        BusinessException.assertTrue(Objects.nonNull(pattern), "格式不能为空");
+        BusinessException.isTrue(Objects.nonNull(pattern), "格式不能为空");
         try {
             LocalDateTime localDateTime = LocalDateTime.parse(date, DateTimeFormatter.ofPattern(pattern));
             return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
