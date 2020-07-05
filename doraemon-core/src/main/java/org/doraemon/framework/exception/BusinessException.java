@@ -1,6 +1,7 @@
 package org.doraemon.framework.exception;
 
 import org.doraemon.framework.Constants;
+import org.doraemon.framework.base.BaseCode;
 
 import java.util.Objects;
 
@@ -60,6 +61,6 @@ public abstract class BusinessException {
     }
 
     public static void newException(String message) {
-        throw new ApplicationRuntimeException(Constants.ResultCode.EXP_CUSTOM_ERROR.getErrorCode(), message);
+        throw new ApplicationRuntimeException(new ExceptionCode(new BaseCode(Constants.ResultCode.CUSTOM_ERROR.getCode(), message)));
     }
 }
