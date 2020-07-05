@@ -9,11 +9,11 @@
         <relativePath>../doraemon-framework-bom/pom.xml</relativePath>
     </parent>
 
-    <artifactId>doraemon-webmvc</artifactId>
+    <artifactId>doraemon-webmvc-extension</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>Doraemon Web MVC</name>
-    <description>Doraemon Web MVC</description>
+    <name>Doraemon Web MVC Extension</name>
+    <description>Doraemon Web MVC Extension</description>
     <url>https://github.com/doraemon-projects/doraemon-framework</url>
     <organization>
         <name>jfteam</name>
@@ -48,12 +48,10 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>5.2.5.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.doraemon.framework</groupId>
             <artifactId>doraemon-base</artifactId>
-            <version>${doraemon-framework.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>

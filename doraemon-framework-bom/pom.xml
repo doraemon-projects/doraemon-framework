@@ -39,8 +39,8 @@
         <module>../doraemon-base</module>
         <module>../doraemon-core</module>
         <module>../doraemon-mybatis-generator</module>
-        <module>../doraemon-webmvc</module>
         <module>../doraemon-jaxrs-extension</module>
+        <module>../doraemon-webmvc-extension</module>
     </modules>
 
     <properties>
