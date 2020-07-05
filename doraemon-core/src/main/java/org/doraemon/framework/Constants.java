@@ -49,6 +49,7 @@ public abstract class Constants {
         public static final IEnumProvider<Integer> TOKEN_EXPIRED = new BaseCode(40301, "权限过期");
         public static final IEnumProvider<Integer> NOT_FOUND = new BaseCode(40400, "数据不存在");
         public static final IEnumProvider<Integer> FAILURE = new BaseCode(50000, "系统未知异常");
+        public static final IEnumProvider<Integer> EXPECTED = new BaseCode(50001, "参数未达到预期值");
         public static final IEnumProvider<Integer> TIMEOUT = new BaseCode(50400, "服务超时");
         //业务自定义编码
         public static final IEnumProvider<Integer> RECORD_EXIST = new BaseCode(20100, "记录已存在");
@@ -61,6 +62,7 @@ public abstract class Constants {
         //自定义异常编码
         public static final IExceptionCodeProvider EXP_FAILURE = new ExceptionCode(FAILURE);
         public static final IExceptionCodeProvider EXP_CUSTOM_ERROR = new ExceptionCode(CUSTOM_ERROR);
+        public static final IExceptionCodeProvider EXP_EXPECTED = new ExceptionCode(EXPECTED);
         public static final IExceptionCodeProvider EXP_RECORD_EXIST = new ExceptionCode(RECORD_EXIST);
         public static final IExceptionCodeProvider EXP_RECORD_NOT_EXIST = new ExceptionCode(RECORD_NOT_EXIST);
         public static final IExceptionCodeProvider EXP_RECORD_INVALID = new ExceptionCode(RECORD_INVALID);
