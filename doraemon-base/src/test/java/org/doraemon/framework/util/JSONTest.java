@@ -45,7 +45,7 @@ public class JSONTest {
         BaseObject baseObject = new BaseObject();
         baseObject.setId(UUID.randomUUID().toString());
         baseObject.setCreatedDate(new Date());
-        baseObject.setUpdatedDate(new Date());
+        baseObject.setLastModifiedDate(new Date());
         System.out.println(JSON.toJSONString(baseObject));
     }
 
@@ -54,7 +54,7 @@ public class JSONTest {
         BaseObject baseObject = new BaseObject();
         baseObject.setId(UUID.randomUUID().toString());
         baseObject.setCreatedDate(new Date());
-        baseObject.setUpdatedDate(new Date());
+        baseObject.setLastModifiedDate(new Date());
         System.out.println(JSON.toJSONString(baseObject, false));
         System.out.println(JSON.toJSONString(baseObject, true));
     }

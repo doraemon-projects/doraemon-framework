@@ -12,10 +12,13 @@ import java.util.Date;
 public class BaseObject<ID> implements Serializable {
 
     private ID id;
+    /**
+     * 以下命名按照JPA的规范来实现
+     */
     private String createdBy;
     private Date createdDate;
-    private String updatedBy;
-    private Date updatedDate;
+    private String lastModifiedBy;
+    private Date lastModifiedDate;
 
     public ID getId() {
         return id;
@@ -41,19 +44,19 @@ public class BaseObject<ID> implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public String getUpdatedBy() {
-        return updatedBy;
+    public String getLastModifiedBy() {
+        return lastModifiedBy;
     }
 
-    public void setUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
+    public void setLastModifiedBy(String lastModifiedBy) {
+        this.lastModifiedBy = lastModifiedBy;
     }
 
-    public Date getUpdatedDate() {
-        return updatedDate;
+    public Date getLastModifiedDate() {
+        return lastModifiedDate;
     }
 
-    public void setUpdatedDate(Date updatedDate) {
-        this.updatedDate = updatedDate;
+    public void setLastModifiedDate(Date lastModifiedDate) {
+        this.lastModifiedDate = lastModifiedDate;
     }
 }
