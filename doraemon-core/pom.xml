@@ -63,6 +63,10 @@
             <artifactId>reflectasm</artifactId>
             <version>1.11.9</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
         <!--test-->
         <dependency>
             <groupId>junit</groupId>

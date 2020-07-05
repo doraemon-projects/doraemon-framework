@@ -55,11 +55,11 @@ public abstract class BusinessException {
         }
     }
 
-    private static void newException() {
+    public static void newException() {
         throw new ApplicationRuntimeException(Constants.ResultCode.EXP_CUSTOM_ERROR);
     }
 
-    private static void newException(String message) {
+    public static void newException(String message) {
         throw new ApplicationRuntimeException(Constants.ResultCode.EXP_CUSTOM_ERROR.getErrorCode(), message);
     }
 }

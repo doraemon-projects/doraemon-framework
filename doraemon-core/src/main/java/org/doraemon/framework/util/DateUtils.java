@@ -1,8 +1,8 @@
 package org.doraemon.framework.util;
 
 import org.doraemon.framework.Constants;
-import org.doraemon.framework.base.BaseCode;
 import org.doraemon.framework.exception.ApplicationRuntimeException;
+import org.doraemon.framework.exception.BusinessException;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -18,7 +18,7 @@ import java.util.Objects;
  * @author: yuanDong.lin
  * Date:     2019/12/17 22:22
  */
-public abstract class DateUtils {
+public abstract class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
     private DateUtils() {
 
@@ -27,42 +27,42 @@ public abstract class DateUtils {
     /**
      * 格式化日期时间格式
      */
-    private static final String DEFAULT_DATETIME_FORMATTER = "yyyy:MM:dd HH:mm:ss";
+    public static final String DEFAULT_DATETIME_FORMATTER = "yyyy:MM:dd HH:mm:ss";
 
     /**
      * 格式化日期时间格式(横线连接)
      */
-    private static final String LOCAL_DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
+    public static final String LOCAL_DATE_TIME_PATTERN = "yyyy-MM-dd HH:mm:ss";
 
     /**
      * 格式化日期时间格式(中文)
      */
-    private static final String LOCAL_DATE_TIME_PATTERN_CN = "yyyy年MM月dd日 HH:mm:ss";
+    public static final String LOCAL_DATE_TIME_PATTERN_CN = "yyyy年MM月dd日 HH:mm:ss";
 
     /**
      * 格式化日期格式
      */
-    private static final String DEFAULT_DATE_FORMATTER = "yyyy:MM:dd";
+    public static final String DEFAULT_DATE_FORMATTER = "yyyy:MM:dd";
 
     /**
      * 格式化日期格式(横线连接)
      */
-    private static final String LOCAL_DATE_PATTERN = "yyyy-MM-dd";
+    public static final String LOCAL_DATE_PATTERN = "yyyy-MM-dd";
 
     /**
      * 格式化日期格式(中文)
      */
-    private static final String DATE_FORMATTER_CN = "yyyy年MM月dd日";
+    public static final String DATE_FORMATTER_CN = "yyyy年MM月dd日";
 
     /**
      * 格式化时间格式
      */
-    private static final String DEFAULT_IME_FORMATTER = "HH:mm:ss";
+    public static final String DEFAULT_IME_FORMATTER = "HH:mm:ss";
 
     /**
      * 格式化时间格式(中文)
      */
-    private static final String TIME_FORMATTER = "HH时mm分ss秒";
+    public static final String TIME_FORMATTER = "HH时mm分ss秒";
 
     /**
      * 获取当前时间毫秒数
@@ -108,6 +108,10 @@ public abstract class DateUtils {
         return LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
     }
 
+    public static Date parseByDayPattern(String date) {
+        return parseLocalDateTime2Date(date, LOCAL_DATE_PATTERN);
+    }
+
     /**
      * 默认格式字符时间转日期
      *
@@ -130,7 +134,7 @@ public abstract class DateUtils {
      * @return
      */
     public static Date parseLocalDateTime2Date(String date, String pattern) {
-        assert Objects.nonNull(pattern) : "格式不能为空";
+        BusinessException.assertTrue(Objects.nonNull(pattern), "格式不能为空");
         try {
             LocalDateTime localDateTime = LocalDateTime.parse(date, DateTimeFormatter.ofPattern(pattern));
             return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
