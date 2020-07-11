@@ -1,8 +1,6 @@
 package org.doraemon.framework.exception;
 
-import org.doraemon.framework.base.IBaseCodeProvider;
-
-import java.util.Objects;
+import org.doraemon.framework.response.ResultCode;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,61 +10,50 @@ import java.util.Objects;
  */
 public class ApplicationException extends Exception {
 
-    private final String errorCode;
-    private String message;
-    private Object[] args;
+    private String errorCode = ResultCode.CUSTOM_ERROR.getCode();
+    private String message = ResultCode.CUSTOM_ERROR.getName();
 
-    public ApplicationException(String errorCode) {
+    public ApplicationException() {
         super();
-        this.errorCode = errorCode;
     }
 
-    public ApplicationException(String errorCode, Object... args) {
-        super();
-        this.errorCode = errorCode;
-        this.args = args;
+    public ApplicationException(String message) {
+        super(message);
+        this.message = message;
     }
 
-    public ApplicationException(String errorCode, Throwable throwable) {
+    public ApplicationException(Throwable throwable) {
         super(throwable);
+    }
+
+    public ApplicationException(String errorCode, String message) {
+        super(message);
         this.errorCode = errorCode;
+        this.message = message;
     }
 
-    public ApplicationException(String errorCode, Throwable throwable, Object... args) {
-        super(throwable);
+    public ApplicationException(String message, Throwable throwable) {
+        super(message, throwable);
+        this.message = message;
+    }
+
+    public ApplicationException(String errorCode, String message, Throwable throwable) {
+        super(message, throwable);
         this.errorCode = errorCode;
-        this.args = args;
-    }
-
-    public ApplicationException(IBaseCodeProvider baseCodeProvider) {
-        this.errorCode = baseCodeProvider.getCode();
-        this.message = baseCodeProvider.getName();
-    }
-
-    public ApplicationException(IBaseCodeProvider baseCodeProvider, Object... args) {
-        this.errorCode = baseCodeProvider.getCode();
-        this.message = baseCodeProvider.getName();
-        this.args = args;
+        this.message = message;
     }
 
     /**
      * 尽量不要调用此方法,错误信息采用ExceptionMessageManager构建
      *
-     * @return 异常信息
+     * @return
      */
     @Override
     public String getMessage() {
-        if (Objects.nonNull(this.message) && this.message.trim().length() > 0) {
-            return this.message;
-        }
-        return ExceptionMessageManager.getMessage(this.errorCode, this.args);
+        return message;
     }
 
     public String getErrorCode() {
         return errorCode;
-    }
-
-    public Object[] getArgs() {
-        return args;
     }
 }

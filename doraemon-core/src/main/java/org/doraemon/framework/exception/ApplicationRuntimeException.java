@@ -1,8 +1,6 @@
 package org.doraemon.framework.exception;
 
-import org.doraemon.framework.base.IBaseCodeProvider;
-
-import java.util.Objects;
+import org.doraemon.framework.response.ResultCode;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,41 +10,37 @@ import java.util.Objects;
  */
 public class ApplicationRuntimeException extends RuntimeException {
 
-    private final String errorCode;
-    private String message;
-    private Object[] args;
+    private String errorCode = ResultCode.CUSTOM_ERROR.getCode();
+    private String message = ResultCode.CUSTOM_ERROR.getName();
 
-    public ApplicationRuntimeException(String errorCode) {
+    public ApplicationRuntimeException() {
         super();
-        this.errorCode = errorCode;
     }
 
-    public ApplicationRuntimeException(String errorCode, Object... args) {
-        super();
-        this.errorCode = errorCode;
-        this.args = args;
+    public ApplicationRuntimeException(String message) {
+        super(message);
+        this.message = message;
     }
 
-    public ApplicationRuntimeException(String errorCode, Throwable throwable) {
+    public ApplicationRuntimeException(Throwable throwable) {
         super(throwable);
+    }
+
+    public ApplicationRuntimeException(String errorCode, String message) {
+        super(message);
         this.errorCode = errorCode;
+        this.message = message;
     }
 
-    public ApplicationRuntimeException(String errorCode, Throwable throwable, Object... args) {
-        super(throwable);
+    public ApplicationRuntimeException(String message, Throwable throwable) {
+        super(message, throwable);
+        this.message = message;
+    }
+
+    public ApplicationRuntimeException(String errorCode, String message, Throwable throwable) {
+        super(message, throwable);
         this.errorCode = errorCode;
-        this.args = args;
-    }
-
-    public ApplicationRuntimeException(IBaseCodeProvider baseCodeProvider) {
-        this.errorCode = baseCodeProvider.getCode();
-        this.message = baseCodeProvider.getName();
-    }
-
-    public ApplicationRuntimeException(IBaseCodeProvider baseCodeProvider, Object... args) {
-        this.errorCode = baseCodeProvider.getCode();
-        this.message = baseCodeProvider.getName();
-        this.args = args;
+        this.message = message;
     }
 
     /**
@@ -56,17 +50,10 @@ public class ApplicationRuntimeException extends RuntimeException {
      */
     @Override
     public String getMessage() {
-        if (Objects.nonNull(this.message) && this.message.trim().length() > 0) {
-            return this.message;
-        }
-        return ExceptionMessageManager.getMessage(this.errorCode, this.args);
+        return message;
     }
 
     public String getErrorCode() {
         return errorCode;
-    }
-
-    public Object[] getArgs() {
-        return args;
     }
 }

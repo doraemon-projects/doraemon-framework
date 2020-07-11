@@ -15,10 +15,10 @@ public abstract class ExceptionUtils {
     }
 
     public static void throwNewException() {
-        throw new ApplicationRuntimeException(ResultCode.CUSTOM_ERROR);
+        throwNewException(ResultCode.CUSTOM_ERROR.getName());
     }
 
     public static void throwNewException(String message) {
-        throw new ApplicationRuntimeException(ResultCode.CUSTOM_ERROR, message);
+        throw new ApplicationRuntimeException(ResultCode.CUSTOM_ERROR.getCode(), message);
     }
 }

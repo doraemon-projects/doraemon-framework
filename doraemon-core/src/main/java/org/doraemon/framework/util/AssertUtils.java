@@ -52,7 +52,7 @@ public abstract class AssertUtils {
     }
 
     public static void assertNotNull(Object actual) {
-        assertNotNull(actual, "actual must be not null");
+        assertNotNull(actual, "param must be not null");
     }
 
     public static void assertNull(Object actual, String message) {
@@ -60,11 +60,11 @@ public abstract class AssertUtils {
     }
 
     public static void assertNull(Object actual) {
-        assertNull(actual, "actual must be null");
+        assertNull(actual, "param must be null");
     }
 
     public static void assertNotEmpty(Collection actual) {
-        assertNotEmpty(actual, "actual must be not null or empty");
+        assertNotEmpty(actual, "param must be not null or empty");
     }
 
     public static void assertNotEmpty(Collection actual, String message) {
@@ -84,7 +84,7 @@ public abstract class AssertUtils {
     }
 
     public static void assertNotEmpty(Object[] actual) {
-        assertNotEmpty(actual, "actual must be not null or size is not zero");
+        assertNotEmpty(actual, "param must be not null or size is not zero");
     }
 
     public static void assertNotEmpty(Object[] actual, String message) {
@@ -94,7 +94,7 @@ public abstract class AssertUtils {
     }
 
     public static void assertInstanceOf(Object actual, Class clazz) {
-        assertInstanceOf(actual, clazz, " actual must instants of clazz");
+        assertInstanceOf(actual, clazz, "actual must instants of clazz");
     }
 
     public static void assertInstanceOf(Object actual, Class clazz, String message) {
@@ -103,13 +103,21 @@ public abstract class AssertUtils {
         }
     }
 
-    public static void assertAssignableFrom(Class subType, Class superType) {
-        assertAssignableFrom(subType, superType, "subType must assignable from superType");
+    public static void assertAssignableFrom(Class superType, Class subType) {
+        assertAssignableFrom(superType, subType, "superType must be subType's interface or parent class");
     }
 
-    public static void assertAssignableFrom(Class subType, Class superType, String message) {
-        if (!subType.isAssignableFrom(superType)) {
+    public static void assertAssignableFrom(Class superType, Class subType, String message) {
+        if (!superType.isAssignableFrom(subType)) {
             failure(message);
         }
+    }
+
+    public static void assertNotZero(int actual) {
+        assertFalse(actual == 0, "param must be not zero");
+    }
+
+    public static void assertNotZero(long actual) {
+        assertFalse(actual == 0, "param must be not zero");
     }
 }

@@ -7,17 +7,8 @@ import java.util.List;
  * @author: fengwenping
  * @date: 2020-04-12 17:20
  */
-public class BaseQuery<ID> {
-    protected ID id;
+public class BaseQuery<ID> extends BaseObject {
     protected List<ID> ids;
-
-    public ID getId() {
-        return id;
-    }
-
-    public void setId(ID id) {
-        this.id = id;
-    }
 
     public List<ID> getIds() {
         return ids;
