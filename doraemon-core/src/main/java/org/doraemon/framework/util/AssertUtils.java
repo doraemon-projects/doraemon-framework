@@ -1,8 +1,5 @@
 package org.doraemon.framework.util;
 
-import org.doraemon.framework.exception.ApplicationRuntimeException;
-import org.doraemon.framework.response.ResultCode;
-
 import java.util.Collection;
 import java.util.Map;
 import java.util.Objects;
@@ -19,21 +16,9 @@ public abstract class AssertUtils {
 
     private static void failure(String message) {
         if (message == null) {
-            throwNewException();
+            ExceptionUtils.throwNewException();
         }
-        throwNewException(message);
-    }
-
-    public static void throwNewException(Throwable throwable) {
-        throwNewException(throwable.getMessage());
-    }
-
-    public static void throwNewException() {
-        throw new ApplicationRuntimeException(ResultCode.CUSTOM_ERROR);
-    }
-
-    public static void throwNewException(String message) {
-        throw new ApplicationRuntimeException(ResultCode.CUSTOM_ERROR, message);
+        ExceptionUtils.throwNewException(message);
     }
 
     public static void assertTrue(boolean actual, String message) {
@@ -54,32 +39,32 @@ public abstract class AssertUtils {
         assertFalse(actual, null);
     }
 
-    public static void assertEquals(Object expected, Object actual) {
-        assertTrue(Objects.equals(expected, actual));
-    }
-
     public static void assertEquals(Object expected, Object actual, String message) {
         assertTrue(Objects.equals(expected, actual), message);
     }
 
+    public static void assertEquals(Object expected, Object actual) {
+        assertEquals(expected, actual, "expected and actual must be equals");
+    }
+
     public static void assertNotNull(Object actual, String message) {
-        assertTrue(Objects.equals(actual, null), message);
-    }
-
-    public static void assertNotNull(Object actual) {
-        assertTrue(Objects.equals(actual, null));
-    }
-
-    public static void assertNull(Object actual, String message) {
         assertFalse(Objects.equals(actual, null), message);
     }
 
+    public static void assertNotNull(Object actual) {
+        assertNotNull(actual, "actual must be not null");
+    }
+
+    public static void assertNull(Object actual, String message) {
+        assertTrue(Objects.equals(actual, null), message);
+    }
+
     public static void assertNull(Object actual) {
-        assertFalse(Objects.equals(actual, null));
+        assertNull(actual, "actual must be null");
     }
 
     public static void assertNotEmpty(Collection actual) {
-        assertNotEmpty(actual, null);
+        assertNotEmpty(actual, "actual must be not null or empty");
     }
 
     public static void assertNotEmpty(Collection actual, String message) {
@@ -99,7 +84,7 @@ public abstract class AssertUtils {
     }
 
     public static void assertNotEmpty(Object[] actual) {
-        assertNotEmpty(actual, null);
+        assertNotEmpty(actual, "actual must be not null or size is not zero");
     }
 
     public static void assertNotEmpty(Object[] actual, String message) {
@@ -108,22 +93,22 @@ public abstract class AssertUtils {
         }
     }
 
-    public static void assertInstanceOf(Class clazz, Object actual) {
-        assertInstanceOf(clazz, actual);
+    public static void assertInstanceOf(Object actual, Class clazz) {
+        assertInstanceOf(actual, clazz, " actual must instants of clazz");
     }
 
     public static void assertInstanceOf(Object actual, Class clazz, String message) {
-        if (clazz.isInstance(actual)) {
+        if (!clazz.isInstance(actual)) {
             failure(message);
         }
     }
 
     public static void assertAssignableFrom(Class subType, Class superType) {
-        assertAssignableFrom(subType, superType, null);
+        assertAssignableFrom(subType, superType, "subType must assignable from superType");
     }
 
     public static void assertAssignableFrom(Class subType, Class superType, String message) {
-        if (subType.isAssignableFrom(superType)) {
+        if (!subType.isAssignableFrom(superType)) {
             failure(message);
         }
     }
