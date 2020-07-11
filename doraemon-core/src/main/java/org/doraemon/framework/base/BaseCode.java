@@ -5,23 +5,23 @@ package org.doraemon.framework.base;
  * @author: fengwenping
  * @date: 2020-05-16 18:09
  */
-public class BaseCode implements IEnumProvider<Integer> {
+public class BaseCode implements IBaseCodeProvider {
 
-    protected Integer code;
+    protected String code;
     protected String name;
 
-    public BaseCode(Integer code) {
+    public BaseCode(String code) {
         this.code = code;
-        this.name = code.toString();
+        this.name = code;
     }
 
-    public BaseCode(Integer code, String name) {
+    public BaseCode(String code, String name) {
         this.code = code;
         this.name = name;
     }
 
     @Override
-    public Integer getCode() {
+    public String getCode() {
         return this.code;
     }
 
@@ -32,6 +32,6 @@ public class BaseCode implements IEnumProvider<Integer> {
 
     @Override
     public String toString() {
-        return this.info();
+        return info();
     }
 }

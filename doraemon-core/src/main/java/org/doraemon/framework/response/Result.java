@@ -1,9 +1,6 @@
 package org.doraemon.framework.response;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.doraemon.framework.Constants;
-
-import java.util.Objects;
 
 /**
  * @description: 响应结果
@@ -12,7 +9,7 @@ import java.util.Objects;
  */
 public class Result<T> {
     @JsonIgnore
-    private int httpStatus;
+    private int httpStatus = 200;
     private String code;
     private String message;
     private T data;
@@ -35,24 +32,24 @@ public class Result<T> {
 
     public static Result success() {
         Result result = new Result.Builder<>()
-                .code(Objects.toString(Constants.ResultCode.SUCCESS.getCode()))
-                .message(Constants.ResultCode.SUCCESS.getName())
+                .code(ResultCode.SUCCESS.getCode())
+                .message(ResultCode.SUCCESS.getName())
                 .build();
         return result;
     }
 
     public static Result success(Object data) {
         Result result = new Result.Builder<>()
-                .code(Objects.toString(Constants.ResultCode.SUCCESS.getCode()))
-                .message(Constants.ResultCode.SUCCESS.getName())
+                .code(ResultCode.SUCCESS.getCode())
+                .message(ResultCode.SUCCESS.getName())
                 .data(data).build();
         return result;
     }
 
     public static Result failure(Object data) {
         Result result = new Builder<>()
-                .code(Objects.toString(Constants.ResultCode.FAILURE.getCode()))
-                .message(Constants.ResultCode.FAILURE.getName())
+                .code(ResultCode.FAILURE.getCode())
+                .message(ResultCode.FAILURE.getName())
                 .build();
         return result;
     }

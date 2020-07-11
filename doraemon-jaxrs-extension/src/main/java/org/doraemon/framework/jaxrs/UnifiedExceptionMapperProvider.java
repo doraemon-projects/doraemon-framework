@@ -4,6 +4,7 @@ import org.doraemon.framework.Constants;
 import org.doraemon.framework.exception.ApplicationException;
 import org.doraemon.framework.exception.ApplicationRuntimeException;
 import org.doraemon.framework.response.Result;
+import org.doraemon.framework.response.ResultCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,7 +50,7 @@ public class UnifiedExceptionMapperProvider implements ExceptionMapper<Exception
                     .build();
         } else {
             result = new Result.Builder<String>()
-                    .code(Constants.ResultCode.EXP_FAILURE.getErrorCode())
+                    .code(ResultCode.FAILURE.getCode())
                     .message(this.getErrorMessage(e))
                     .build();
         }
@@ -70,7 +71,7 @@ public class UnifiedExceptionMapperProvider implements ExceptionMapper<Exception
         if (this.getShowMessage()) {
             return this.getStackTraceMessage(exception);
         }
-        return Constants.ResultCode.EXP_FAILURE.getMessage();
+        return ResultCode.FAILURE.getName();
     }
 
 

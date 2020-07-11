@@ -1,5 +1,7 @@
 package org.doraemon.framework.exception;
 
+import org.doraemon.framework.base.IBaseCodeProvider;
+
 import java.util.Objects;
 
 /**
@@ -36,14 +38,14 @@ public class ApplicationException extends Exception {
         this.args = args;
     }
 
-    public ApplicationException(IExceptionCodeProvider exceptionCodeProvider) {
-        this.errorCode = exceptionCodeProvider.getErrorCode();
-        this.message = exceptionCodeProvider.getMessage();
+    public ApplicationException(IBaseCodeProvider baseCodeProvider) {
+        this.errorCode = baseCodeProvider.getCode();
+        this.message = baseCodeProvider.getName();
     }
 
-    public ApplicationException(IExceptionCodeProvider exceptionCodeProvider, Object... args) {
-        this.errorCode = exceptionCodeProvider.getErrorCode();
-        this.message = exceptionCodeProvider.getMessage();
+    public ApplicationException(IBaseCodeProvider baseCodeProvider, Object... args) {
+        this.errorCode = baseCodeProvider.getCode();
+        this.message = baseCodeProvider.getName();
         this.args = args;
     }
 

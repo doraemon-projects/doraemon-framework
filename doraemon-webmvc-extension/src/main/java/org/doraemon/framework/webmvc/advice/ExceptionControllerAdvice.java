@@ -3,15 +3,15 @@ package org.doraemon.framework.webmvc.advice;
 import org.doraemon.framework.exception.ApplicationException;
 import org.doraemon.framework.exception.ApplicationRuntimeException;
 import org.doraemon.framework.response.Result;
-import org.doraemon.framework.webmvc.WebConstants;
-import org.springframework.util.CollectionUtils;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * @description: 描述
@@ -23,15 +23,10 @@ public class ExceptionControllerAdvice {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Result<String> methodArgumentNotValidException(MethodArgumentNotValidException exception) {
-        String message = null;
         final List<ObjectError> allErrors = exception.getBindingResult().getAllErrors();
-        if (!CollectionUtils.isEmpty(allErrors)) {
-            final ObjectError objectError = allErrors.get(0);
-            message = objectError.getDefaultMessage();
-        }
-        return new Result.Builder<String>()
-                .code(Objects.toString(WebConstants.ResultCode.CHECK_ERROR.getCode()))
-                .message(message).build();
+        final List<String> data = Optional.ofNullable(allErrors).orElse(Collections.emptyList())
+                .stream().map(ObjectError::getDefaultMessage).collect(Collectors.toList());
+        return Result.failure(data);
     }
 
     @ExceptionHandler(ApplicationRuntimeException.class)

@@ -1,8 +1,7 @@
 package org.doraemon.framework.util;
 
-import org.doraemon.framework.Constants;
 import org.doraemon.framework.exception.ApplicationRuntimeException;
-import org.doraemon.framework.exception.BusinessException;
+import org.doraemon.framework.response.ResultCode;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
@@ -123,7 +122,7 @@ public abstract class DateUtils extends org.apache.commons.lang3.time.DateUtils 
             LocalDateTime localDateTime = LocalDateTime.parse(date);
             return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
         } catch (Exception e) {
-            throw new ApplicationRuntimeException(Objects.toString(Constants.ResultCode.EXCEPTION.getCode()), e.getMessage());
+            throw new ApplicationRuntimeException(ResultCode.CUSTOM_ERROR.getCode(), e);
         }
     }
 
@@ -134,12 +133,12 @@ public abstract class DateUtils extends org.apache.commons.lang3.time.DateUtils 
      * @return
      */
     public static Date parseLocalDateTime2Date(String date, String pattern) {
-        BusinessException.isTrue(Objects.nonNull(pattern), "格式不能为空");
+        AssertUtils.assertTrue(Objects.nonNull(pattern), "格式不能为空");
         try {
             LocalDateTime localDateTime = LocalDateTime.parse(date, DateTimeFormatter.ofPattern(pattern));
             return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
         } catch (Exception e) {
-            throw new ApplicationRuntimeException(Objects.toString(Constants.ResultCode.EXCEPTION.getCode()), e.getMessage());
+            throw new ApplicationRuntimeException(ResultCode.CUSTOM_ERROR.getCode(), e);
         }
     }
 
