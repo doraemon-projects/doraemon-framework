@@ -114,10 +114,18 @@ public abstract class AssertUtils {
     }
 
     public static void assertNotZero(int actual) {
-        assertFalse(actual == 0, "param must be not zero");
+        assertNotZero(actual, "param must be not zero");
+    }
+
+    public static void assertNotZero(int actual, String message) {
+        assertFalse(actual == 0, message);
     }
 
     public static void assertNotZero(long actual) {
-        assertFalse(actual == 0, "param must be not zero");
+        assertNotZero(actual, "param must be not zero");
+    }
+
+    public static void assertNotZero(long actual, String message) {
+        assertFalse(actual == 0, message);
     }
 }
