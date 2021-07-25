@@ -1,7 +1,7 @@
 package org.doraemon.framework.core.util;
 
-import org.doraemon.framework.dao.mybatis.BaseDO;
-import org.doraemon.framework.dao.mybatis.BaseParam;
+import org.doraemon.framework.core.base.BaseDO;
+import org.doraemon.framework.core.base.BaseParam;
 import org.doraemon.framework.core.exception.BusinessException;
 import org.junit.Assert;
 import org.junit.Test;

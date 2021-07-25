@@ -1,4 +1,4 @@
-package org.doraemon.framework.dao.mybatis;
+package org.doraemon.framework.core.base;
 
 import java.io.Serializable;
 import java.util.Date;

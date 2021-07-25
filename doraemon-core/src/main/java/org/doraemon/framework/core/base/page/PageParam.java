@@ -1,4 +1,4 @@
-package org.doraemon.framework.dao.mybatis.page;
+package org.doraemon.framework.core.base.page;
 
 import java.io.Serializable;
 
@@ -9,19 +9,20 @@ import java.io.Serializable;
  * date:        2019/7/14 19:34
  */
 public class PageParam implements Serializable {
+    public static final int DEFAULT_PAGE_NUMBER = 1;
     public static final int DEFAULT_PAGE_SIZE = 20;
     private final int pageNumber;
     private final int pageSize;
     private Sort sort;
 
     public PageParam() {
-        this.pageNumber = 0;
+        this.pageNumber = DEFAULT_PAGE_NUMBER;
         this.pageSize = DEFAULT_PAGE_SIZE;
     }
 
     public PageParam(int pageNumber, int pageSize) {
-        if (pageNumber < 0) {
-            throw new IllegalArgumentException("Page index must not be less than zero!");
+        if (pageNumber < DEFAULT_PAGE_NUMBER) {
+            throw new IllegalArgumentException("Page index must not be less than one!");
         }
         if (pageSize < 1) {
             throw new IllegalArgumentException("Page size must not be less than one!");

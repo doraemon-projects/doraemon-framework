@@ -51,7 +51,7 @@
         </dependency>
         <dependency>
             <groupId>org.doraemon.framework</groupId>
-            <artifactId>doraemon-base</artifactId>
+            <artifactId>doraemon-core</artifactId>
         </dependency>
         <dependency>
             <groupId>javax.servlet</groupId>

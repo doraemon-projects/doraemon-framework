@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 public interface SecurityService {
 
-    public static enum Authority implements IEnumProvider<Integer>, IDescriptionProvider {
+    enum Authority implements IEnumProvider<Integer>, IDescriptionProvider {
         SESSION(10, "session", "session"),
         JWT(20, "jwt", "jwt");
         private Integer code;

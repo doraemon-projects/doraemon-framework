@@ -1,6 +1,6 @@
 package org.doraemon.framework.core.util;
 
-import org.doraemon.framework.dao.mybatis.BaseDO;
+import org.doraemon.framework.core.base.BaseDO;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

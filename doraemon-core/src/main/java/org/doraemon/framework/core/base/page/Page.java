@@ -1,4 +1,4 @@
-package org.doraemon.framework.dao.mybatis.page;
+package org.doraemon.framework.core.base.page;
 
 import java.util.List;
 

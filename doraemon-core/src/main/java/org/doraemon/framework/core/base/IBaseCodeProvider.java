@@ -1,4 +1,4 @@
-package org.doraemon.framework.dao.mybatis;
+package org.doraemon.framework.core.base;
 
 import org.doraemon.framework.core.enums.IEnumProvider;
 

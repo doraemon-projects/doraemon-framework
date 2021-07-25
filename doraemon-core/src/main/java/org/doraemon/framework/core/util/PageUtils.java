@@ -1,8 +1,8 @@
 package org.doraemon.framework.core.util;
 
-import org.doraemon.framework.dao.mybatis.page.Page;
-import org.doraemon.framework.dao.mybatis.page.PageParam;
-import org.doraemon.framework.dao.mybatis.page.PageResult;
+import org.doraemon.framework.core.base.page.Page;
+import org.doraemon.framework.core.base.page.PageParam;
+import org.doraemon.framework.core.base.page.PageResult;
 
 import java.util.List;
 import java.util.function.Function;

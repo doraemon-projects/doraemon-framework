@@ -8,7 +8,7 @@ import org.doraemon.framework.core.enums.IEnumProvider;
  * @author: fengwenping
  * @date: 2020-05-17 18:33
  */
-public class MyBatisConstants extends Constants {
+public interface MyBatisConstants extends Constants {
 
     /**
      * mybatis配置文件名字

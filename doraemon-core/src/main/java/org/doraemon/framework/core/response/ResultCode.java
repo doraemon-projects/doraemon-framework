@@ -1,8 +1,8 @@
 package org.doraemon.framework.core.response;
 
 
-import org.doraemon.framework.dao.mybatis.BaseCode;
-import org.doraemon.framework.dao.mybatis.IBaseCodeProvider;
+import org.doraemon.framework.core.base.BaseCode;
+import org.doraemon.framework.core.base.IBaseCodeProvider;
 
 /**
  * @description: 通用常量

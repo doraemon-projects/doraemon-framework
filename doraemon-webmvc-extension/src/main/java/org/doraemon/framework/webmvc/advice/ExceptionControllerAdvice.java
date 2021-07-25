@@ -38,7 +38,7 @@ public class ExceptionControllerAdvice {
     }
 
     @ExceptionHandler(SystemException.class)
-    public Result<String> applicationException(SystemException exception) {
+    public Result<String> systemException(SystemException exception) {
         return new Result.Builder<String>()
                 .code(exception.getErrorCode())
                 .message(exception.getMessage()).build();

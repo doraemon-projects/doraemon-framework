@@ -1,7 +1,7 @@
 package org.doraemon.framework.dao.mybatis.mapper;
 
-import org.jfteam.common.domain.Page;
-import org.jfteam.common.domain.Pageable;
+import org.doraemon.framework.core.base.page.PageParam;
+import org.doraemon.framework.core.base.page.PageResult;
 
 /**
  * @description: 描述
@@ -13,8 +13,16 @@ public interface BaseRetrievePageMapper<T> {
     /**
      * 查询多条数据(按照分页信息)
      *
-     * @param pageable
+     * @param pageParam
      * @return
      */
-    Page<T> findPage(Pageable pageable);
+    PageResult<T> findPage(PageParam pageParam);
+
+    /**
+     * 统计数量(按照分页信息)
+     *
+     * @param pageParam
+     * @return
+     */
+    int findPageCount(PageParam pageParam);
 }

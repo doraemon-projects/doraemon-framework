@@ -321,11 +321,6 @@
             <!--doraemon-framework-->
             <dependency>
                 <groupId>org.doraemon.framework</groupId>
-                <artifactId>doraemon-base</artifactId>
-                <version>${doraemon-framework.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.doraemon.framework</groupId>
                 <artifactId>doraemon-core</artifactId>
                 <version>${doraemon-framework.version}</version>
             </dependency>
@@ -336,7 +331,7 @@
             </dependency>
             <dependency>
                 <groupId>org.doraemon.framework</groupId>
-                <artifactId>doraemon-webmvc</artifactId>
+                <artifactId>doraemon-webmvc-extension</artifactId>
                 <version>${doraemon-framework.version}</version>
             </dependency>
 

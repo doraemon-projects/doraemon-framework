@@ -8,7 +8,7 @@ import java.nio.charset.StandardCharsets;
  * @author: fengwenping
  * @date: 2020-05-16 23:32
  */
-public abstract class Constants {
+public interface Constants {
 
     public static class CharsetConfig {
         public static Charset defaultCharset() {
