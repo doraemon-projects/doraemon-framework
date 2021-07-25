@@ -1,8 +1,8 @@
 package org.doraemon.framework.webmvc.service;
 
-import org.doraemon.framework.base.IDescriptionProvider;
-import org.doraemon.framework.base.IEnumProvider;
-import org.doraemon.framework.exception.ApplicationException;
+import org.doraemon.framework.core.enums.IDescriptionProvider;
+import org.doraemon.framework.core.enums.IEnumProvider;
+import org.doraemon.framework.core.exception.SystemException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,5 +44,5 @@ public interface SecurityService {
         }
     }
 
-    boolean doCheckPermission(Authority authority, HttpServletRequest request, HttpServletResponse response) throws ApplicationException;
+    boolean doCheckPermission(Authority authority, HttpServletRequest request, HttpServletResponse response) throws SystemException;
 }

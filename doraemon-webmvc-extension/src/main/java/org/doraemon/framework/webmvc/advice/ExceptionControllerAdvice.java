@@ -1,8 +1,9 @@
 package org.doraemon.framework.webmvc.advice;
 
-import org.doraemon.framework.exception.ApplicationException;
-import org.doraemon.framework.exception.ApplicationRuntimeException;
-import org.doraemon.framework.response.Result;
+import org.doraemon.framework.core.exception.SystemException;
+import org.doraemon.framework.core.exception.BusinessException;
+import org.doraemon.framework.core.response.Result;
+import org.doraemon.framework.core.response.ResultUtils;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -26,18 +27,18 @@ public class ExceptionControllerAdvice {
         final List<ObjectError> allErrors = exception.getBindingResult().getAllErrors();
         final List<String> data = Optional.ofNullable(allErrors).orElse(Collections.emptyList())
                 .stream().map(ObjectError::getDefaultMessage).collect(Collectors.toList());
-        return Result.failure(data);
+        return ResultUtils.failure(data);
     }
 
-    @ExceptionHandler(ApplicationRuntimeException.class)
-    public Result<String> businessException(ApplicationRuntimeException exception) {
+    @ExceptionHandler(BusinessException.class)
+    public Result<String> businessException(BusinessException exception) {
         return new Result.Builder<String>()
                 .code(exception.getErrorCode())
                 .message(exception.getMessage()).build();
     }
 
-    @ExceptionHandler(ApplicationException.class)
-    public Result<String> applicationException(ApplicationException exception) {
+    @ExceptionHandler(SystemException.class)
+    public Result<String> applicationException(SystemException exception) {
         return new Result.Builder<String>()
                 .code(exception.getErrorCode())
                 .message(exception.getMessage()).build();

@@ -1,10 +1,10 @@
 package org.doraemon.framework.jaxrs;
 
-import org.doraemon.framework.Constants;
-import org.doraemon.framework.exception.ApplicationException;
-import org.doraemon.framework.exception.ApplicationRuntimeException;
-import org.doraemon.framework.response.Result;
-import org.doraemon.framework.response.ResultCode;
+import org.doraemon.framework.core.Constants;
+import org.doraemon.framework.core.exception.SystemException;
+import org.doraemon.framework.core.exception.BusinessException;
+import org.doraemon.framework.core.response.Result;
+import org.doraemon.framework.core.response.ResultCode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -36,14 +36,14 @@ public class UnifiedExceptionMapperProvider implements ExceptionMapper<Exception
     public Response toResponse(Exception e) {
         LOGGER.error("unified exception handle", e);
         Result<String> result;
-        if (e instanceof ApplicationException) {
-            ApplicationException exception = (ApplicationException) e;
+        if (e instanceof SystemException) {
+            SystemException exception = (SystemException) e;
             result = new Result.Builder<String>()
                     .code(exception.getErrorCode())
                     .message(exception.getMessage())
                     .build();
-        } else if (e instanceof ApplicationRuntimeException) {
-            ApplicationRuntimeException exception = (ApplicationRuntimeException) e;
+        } else if (e instanceof BusinessException) {
+            BusinessException exception = (BusinessException) e;
             result = new Result.Builder<String>()
                     .code(exception.getErrorCode())
                     .message(exception.getMessage())

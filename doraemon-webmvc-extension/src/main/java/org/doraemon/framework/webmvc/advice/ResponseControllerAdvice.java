@@ -1,7 +1,8 @@
 package org.doraemon.framework.webmvc.advice;
 
-import org.doraemon.framework.response.Result;
-import org.doraemon.framework.util.JSON;
+import org.doraemon.framework.core.response.Result;
+import org.doraemon.framework.core.response.ResultUtils;
+import org.doraemon.framework.core.util.JacksonUtils;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -29,8 +30,8 @@ public class ResponseControllerAdvice implements ResponseBodyAdvice<Object> {
     public Object beforeBodyWrite(Object data, MethodParameter returnType, MediaType mediaType, Class<? extends HttpMessageConverter<?>> aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
         // String类型不能直接包装，所以要进行些特别的处理
         if (Objects.equals(String.class, returnType.getGenericParameterType())) {
-            return JSON.toJSONString(Result.success(data));
+            return JacksonUtils.toJSONString(ResultUtils.success(data));
         }
-        return Result.success(data);
+        return ResultUtils.success(data);
     }
 }

@@ -1,7 +1,7 @@
 package org.doraemon.framework.jaxrs;
 
 import com.fasterxml.jackson.jaxrs.xml.JacksonJaxbXMLProvider;
-import org.doraemon.framework.Constants;
+import org.doraemon.framework.core.Constants;
 
 import javax.inject.Named;
 import javax.ws.rs.Consumes;

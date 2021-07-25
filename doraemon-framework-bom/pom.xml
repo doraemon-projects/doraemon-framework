@@ -36,11 +36,9 @@
     </scm>
 
     <modules>
-        <module>../doraemon-base</module>
         <module>../doraemon-core</module>
-        <module>../doraemon-foundation</module>
         <module>../doraemon-jaxrs-extension</module>
-        <module>../doraemon-utility</module>
+        <module>../doraemon-mybatis-extension</module>
         <module>../doraemon-webmvc-extension</module>
     </modules>
 

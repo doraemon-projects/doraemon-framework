@@ -1,9 +1,10 @@
 package org.doraemon.framework.jaxrs;
 
-import org.doraemon.framework.Constants;
-import org.doraemon.framework.response.Result;
-import org.doraemon.framework.util.JSON;
-import org.doraemon.framework.util.XmlUtils;
+import org.doraemon.framework.core.Constants;
+import org.doraemon.framework.core.response.Result;
+import org.doraemon.framework.core.response.ResultUtils;
+import org.doraemon.framework.core.util.JacksonUtils;
+import org.doraemon.framework.core.util.XmlUtils;
 
 import javax.inject.Named;
 import javax.ws.rs.Consumes;
@@ -36,9 +37,9 @@ public class UnifiedMessageBodyWriterProvider implements MessageBodyWriter<Objec
 
     @Override
     public void writeTo(Object o, Class<?> aClass, Type type, Annotation[] annotations, MediaType mediaType, MultivaluedMap<String, Object> multivaluedMap, OutputStream outputStream) throws IOException, WebApplicationException {
-        String body = JSON.toJSONString(Result.success(o));
+        String body = JacksonUtils.toJSONString(ResultUtils.success(o));
         if (Objects.equals(MediaType.APPLICATION_XML_TYPE.getSubtype(), mediaType.getSubtype())) {
-            body = XmlUtils.convertObject2Xml(Result.success(o));
+            body = XmlUtils.convertObject2Xml(ResultUtils.success(o));
         }
         outputStream.write(body.getBytes(Constants.CharsetConfig.utf8Charset()));
     }
