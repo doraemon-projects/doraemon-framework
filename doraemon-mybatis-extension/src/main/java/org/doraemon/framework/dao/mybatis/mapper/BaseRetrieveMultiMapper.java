@@ -1,6 +1,6 @@
 package org.doraemon.framework.dao.mybatis.mapper;
 
-import org.jfteam.common.domain.Sort;
+import org.doraemon.framework.core.base.page.Sort;
 
 import java.io.Serializable;
 import java.util.Collection;
