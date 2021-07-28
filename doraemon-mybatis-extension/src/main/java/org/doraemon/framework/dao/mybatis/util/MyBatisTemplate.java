@@ -6,9 +6,12 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.doraemon.framework.core.util.PropertyUtils;
 import org.doraemon.framework.core.util.lang3.StringUtils;
 import org.doraemon.framework.dao.mybatis.MyBatisConstants;
+import org.doraemon.framework.dao.mybatis.mapper.BaseMapper;
 
 import java.io.InputStream;
+import java.util.Objects;
 import java.util.Properties;
+import java.util.function.Function;
 
 /**
  * @description: 描述
@@ -16,6 +19,19 @@ import java.util.Properties;
  * @date: 2021-07-25 18:34
  */
 public class MyBatisTemplate {
+
+    private static MyBatisTemplate instance = null;
+
+    public static MyBatisTemplate getInstance() {
+        if (Objects.isNull(instance)) {
+            synchronized (MyBatisTemplate.class) {
+                if (Objects.isNull(instance)) {
+                    instance = new MyBatisTemplate();
+                }
+            }
+        }
+        return instance;
+    }
 
     private static SqlSessionFactory sqlSessionFactory;
 
@@ -49,8 +65,9 @@ public class MyBatisTemplate {
      * @param autoCommit 是否自动提交(开启事务)
      * @return 返回创建的sqlSession
      */
-    public static SqlSession openSqlSession(boolean autoCommit) {
-        return getSqlSessionFactory().openSession(autoCommit);
+    public static SqlSession openSqlSession(SqlSessionFactory sqlSessionFactory, boolean autoCommit) {
+        Objects.requireNonNull(sqlSessionFactory, "参数sqlSessionFactory不能为空");
+        return sqlSessionFactory.openSession(autoCommit);
     }
 
     /**
@@ -59,15 +76,13 @@ public class MyBatisTemplate {
      * @param sqlSession 通过sqlSession进行事务提交
      */
     public static void commit(SqlSession sqlSession) {
-        if (sqlSession != null) {
-            sqlSession.commit();
-        }
+        Objects.requireNonNull(sqlSession, "参数sqlSession不能为空");
+        sqlSession.commit();
     }
 
     public static void rollback(SqlSession sqlSession) {
-        if (sqlSession != null) {
-            sqlSession.rollback();
-        }
+        Objects.requireNonNull(sqlSession, "参数sqlSession不能为空");
+        sqlSession.rollback();
     }
 
     /**
@@ -76,9 +91,8 @@ public class MyBatisTemplate {
      * @param sqlSession 需要关闭的SqlSession
      */
     public static void closeSqlSession(SqlSession sqlSession) {
-        if (sqlSession != null) {
-            sqlSession.close();
-        }
+        Objects.requireNonNull(sqlSession, "参数sqlSession不能为空");
+        sqlSession.close();
     }
 
     /**
@@ -90,9 +104,23 @@ public class MyBatisTemplate {
      * @return 返回结果
      */
     public static <T> T getMapper(SqlSession sqlSession, Class<T> tClass) {
-        if (sqlSession == null) {
-            throw new RuntimeException("参数sqlSession不能为空");
-        }
+        Objects.requireNonNull(sqlSession, "参数sqlSession不能为空");
         return sqlSession.getMapper(tClass);
+    }
+
+    public <T extends BaseMapper, R> R run(Class<T> mapperInterface, Function<T, R> mapperExecutor) {
+        final SqlSessionFactory sqlSessionFactory = MyBatisTemplate.getSqlSessionFactory();
+        final SqlSession sqlSession = MyBatisTemplate.openSqlSession(sqlSessionFactory, false);
+        R result = null;
+        try {
+            final T mapper = MyBatisTemplate.getMapper(sqlSession, mapperInterface);
+            result = mapperExecutor.apply(mapper);
+            MyBatisTemplate.commit(sqlSession);
+        } catch (Exception e) {
+            MyBatisTemplate.rollback(sqlSession);
+        } finally {
+            MyBatisTemplate.closeSqlSession(sqlSession);
+        }
+        return result;
     }
 }
