@@ -14,6 +14,7 @@ public class PageParam implements Serializable {
     private final int pageNumber;
     private final int pageSize;
     private Sort sort;
+    private boolean enabledPaging = Boolean.FALSE;
 
     public PageParam() {
         this.pageNumber = DEFAULT_PAGE_NUMBER;
@@ -50,5 +51,13 @@ public class PageParam implements Serializable {
 
     public Sort getSort() {
         return sort;
+    }
+
+    public void setEnabledPaging(boolean enabledPaging) {
+        this.enabledPaging = enabledPaging;
+    }
+
+    public boolean isEnabledPaging() {
+        return enabledPaging;
     }
 }
