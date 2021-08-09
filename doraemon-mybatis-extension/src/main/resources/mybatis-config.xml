@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-    <properties>
+    <properties resource="mybatis-config.properties">
         <property name="logImpl" value="LOG4J2"/>
         <property name="jdbcTypeForNull" value="VARCHAR"/>
         <property name="callSettersOnNulls" value="true"/>
@@ -13,7 +13,7 @@
             <property name="" value=""/>
         </plugin>
         <plugin interceptor="org.doraemon.framework.dao.mybatis.plugin.SqlLengthCheckPlugin">
-            <property name="maxSqlLengthLimitCount" value="20000"/>
+            <property name="maxSqlLengthLimitCount" value="${mybatis.maxSqlLengthLimitCount}"/>
         </plugin>
     </plugins>
 </configuration>
